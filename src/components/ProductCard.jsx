@@ -1,0 +1,62 @@
+import { getAllProducts } from "@/lib/getAllProducts";
+import Image from "next/image";
+import BuyNowButton from "./BuyNowButton";
+
+const ProductCard = async () => {
+  let res = await getAllProducts();
+
+  return (
+    <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 w-full">
+        {res.data.map((item) => (
+          <div
+            key={item._id}
+            className="bg-white shadow-card border border-card rounded-[8px]"
+          >
+            <div className="p-2">
+              <Image
+                width={0}
+                height={0}
+                sizes="100vw"
+                style={{
+                  width: "100%",
+                  borderRadius: "5px",
+                }}
+                alt="product image"
+                src={item.product_images}
+              />
+            </div>
+
+            <div className="text-center p-3">
+              <div>
+                <div className=" text-sm sm:text-lg md:text-[1rem] ">
+                  <h3 className="truncate font-medium text-[#212b36]">
+                    {item.product_title}
+                  </h3>
+                </div>
+
+                <div className=" flex justify-between items-center w-full">
+                  <div className="w-full">
+                    <div className="flex items-center justify-center">
+                      <p className="text-sm sm:text-lg font-medium text-center">
+                        &#2547; {item.product_price}{" "}
+                      </p>
+                      <del className="text-xs hidden sm:text-sm   font-bold ml-1">
+                        &#2547;800
+                      </del>
+                    </div>
+                    <div className="mt-2 flex  items-center w-full">
+                      <BuyNowButton product={item} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;

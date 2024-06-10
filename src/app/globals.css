@@ -2,32 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.container {
+  width: 95%;
+  margin: 0 auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.search-input {
+  @apply font-normal h-12 px-4 border border-gray-300 rounded-l-md focus:outline-none focus:shadow-inner;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.search-button {
+  @apply h-12 px-4 bg-[#095723] text-white rounded-r-md uppercase text-xs tracking-wide border-0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.cart_quantity {
+  width: auto;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -8px;
+  left: 18px;
+  background-color: #095723;
+  color: #fff;
+  font-size: 14px;
+  padding: 3px 6px;
+  line-height: 0.8;
+}
+
+.nav{
+    box-shadow: 0 7px 20px 0px #00000012;
 }
