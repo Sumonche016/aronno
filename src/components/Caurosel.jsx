@@ -1,17 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const Carousel = ({ children: slides }) => {
   const [curr, setCurr] = useState(0);
   const [clickChange, setClickChange] = useState(false);
 
-  const next = () => {
-    if (curr > slides.length) {
-      setCurr(0);
-    } else {
-      setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
-    }
-  };
+  const next = useCallback(() => {
+    setCurr((curr) => (curr === slides.length - 1 ? 0 : curr + 1));
+  }, [slides.length]);
 
   const [reSlide, setReSlide] = useState(true);
 
@@ -30,7 +26,7 @@ const Carousel = ({ children: slides }) => {
     setClickChange(!clickChange);
   };
 
-  if (slides.length == 0) {
+  if (slides.length === 0) {
     return <div>loading</div>;
   }
 

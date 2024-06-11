@@ -9,7 +9,10 @@ const HeaderCart = () => {
     addToCart: state.addToCart,
   }));
 
-  const products = JSON.parse(localStorage.getItem("products")) || [];
+  let products = [];
+  if (typeof window !== "undefined") {
+    products = JSON.parse(localStorage.getItem("products")) || [];
+  }
 
   let totalPrice = products?.reduce(
     (acc, product) => acc + product.price * product.quantity,
