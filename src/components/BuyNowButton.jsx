@@ -1,33 +1,13 @@
 "use client";
-
-import { useState } from "react";
-import { Button, Drawer, Space } from "antd";
-import useProductStore from "@/store/productSlice";
-import { addProductToCart } from "@/hooks/addProductTocart";
+import { addProductToCart } from "@/hooks/cartFunctions";
+import { useAppDispatch } from "@/lib/hooks";
+import { updateRefetch } from "@/lib/ProductSlice/productSlice";
 
 const BuyNowButton = ({ product }) => {
-  const { addToCart } = useProductStore((state) => ({
-    addToCart: state.addToCart,
-  }));
-
-  const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState("right");
-
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const onChange = (e) => {
-    setPlacement(e.target.value);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
+  const dispatch = useAppDispatch();
   const handleAddToCart = () => {
-    addToCart(product);
-    addProductToCart(product._id, product.product_price);
+    addProductToCart(product);
+    dispatch(updateRefetch());
   };
 
   return (
@@ -40,24 +20,6 @@ const BuyNowButton = ({ product }) => {
           Add To Cart
         </button>
       </div>
-      <Drawer
-        title="Drawer with extra actions"
-        placement={placement}
-        onClose={onClose}
-        open={open}
-        extra={
-          <Space>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button type="primary" onClick={onClose}>
-              OK
-            </Button>
-          </Space>
-        }
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
     </>
   );
 };
