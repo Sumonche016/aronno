@@ -12,7 +12,7 @@ const HeaderCart = () => {
   const [open, setOpen] = useState(false);
   const refetch = useAppSelector((state) => state.productSlice.refetch);
   const windowSize = UseFindWindowSize();
-  const [placement, setPlacement] = useState("right");
+  const [placement] = useState("right");
   const router = useRouter();
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];

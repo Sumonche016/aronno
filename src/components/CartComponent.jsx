@@ -100,6 +100,7 @@ const CartComponent = () => {
               </div>
               <div>
                 <h1 className="font-semibold">{item.totalPrice}</h1>
+                <div className="hidden opacity-0">{totalPrice}</div>
               </div>
             </div>
           </div>
