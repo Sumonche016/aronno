@@ -3,7 +3,7 @@ import { FaBagShopping } from "react-icons/fa6";
 import { BiSolidCategory } from "react-icons/bi";
 const FooterNav = () => {
   return (
-    <div className="bg-primary text-white md:hidden  py-[10px]  fixed bottom-0 left w-full z-[999] shadow-deep  ">
+    <div className="bg-primary text-white md:hidden   py-[10px]  fixed bottom-0 left w-full z-[999] shadow-deep  ">
       <div className="w-[95%] mx-auto">
         <ul className="flex justify-between items-center">
           <li className="flex flex-col  justify-center items-center cursor-pointer">
