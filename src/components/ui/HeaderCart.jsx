@@ -1,19 +1,29 @@
 "use client";
 import { BsBagFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { Button, Drawer, Space } from "antd";
+
 import { useAppSelector } from "@/lib/hooks";
-import UseFindWindowSize from "@/hooks/useWindowSize";
+import Drawer from "react-modern-drawer";
+import { FaShoppingBag } from "react-icons/fa";
+//import styles 👇
+import "react-modern-drawer/dist/index.css";
 import CartComponent from "../CartComponent";
 import { useRouter } from "next/navigation";
+import { RxCross2 } from "react-icons/rx";
+import "simplebar-react/dist/simplebar.min.css";
 const HeaderCart = () => {
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [open, setOpen] = useState(false);
+
   const refetch = useAppSelector((state) => state.productSlice.refetch);
-  const windowSize = UseFindWindowSize();
-  const [placement] = useState("right");
+
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleDrawer = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(storedProducts);
@@ -25,14 +35,6 @@ const HeaderCart = () => {
     setTotalPrice(calculatedTotalPrice);
   }, [refetch]);
 
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
   return (
     <div className="flex justify-end">
       <div className="flex gap-8 items-center">
@@ -42,7 +44,7 @@ const HeaderCart = () => {
             <span className="cart_quantity">{products.length}</span>
           </div>
 
-          <div className="cursor-pointer" onClick={showDrawer}>
+          <div className="cursor-pointer" onClick={toggleDrawer}>
             <h1 className="text-dark text-xs">My Cart</h1>
             <span className="text-dark font-bold md:inline-block flex items-center">
               BDT {""} <span>{totalPrice}</span>
@@ -51,33 +53,40 @@ const HeaderCart = () => {
         </div>
 
         <Drawer
-          headerStyle={""}
-          closeIcon={null}
-          title="Shopping Cart"
-          placement={placement}
-          width={windowSize > 700 ? 400 : 500}
-          onClose={onClose}
-          open={open}
+          open={isOpen}
+          onClose={toggleDrawer}
+          direction="right"
           className="relative my-drawer"
-          extra={
-            <Space>
-              <Button onClick={onClose}>Cancel</Button>
-              <div className="div">{windowSize}</div>
-            </Space>
-          }
         >
+          <div className="drawer-header bg-[#F3F6F9]  flex justify-between items-center mb-6 p-6">
+            <div className="flex  items-center gap-4">
+              <FaShoppingBag />
+              <h1 className="font-semibold">Shopping Cart</h1>
+            </div>
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={toggleDrawer}
+            >
+              <RxCross2 />
+              <h1>Close</h1>
+            </div>
+          </div>
+
           <CartComponent />
-          <div
-            onClick={() => {
-              setOpen(false);
-              router.push("/checkout");
-            }}
-            className="bg-primary cursor-pointer rounded-md text-white absolute bottom-[1rem] p-3 w-[90%] mx-auto"
-          >
-            <div className="flex justify-between items-center w-full">
-              <p className="font-medium text-[1.1rem]">Proceed To Checkout</p>
-              <div className="bg-white rounded-md py-2 px-3 text-black font-semibold text-[1.2rem]">
-                ৳ {totalPrice}
+
+          <div className="flex justify-center ">
+            <div
+              onClick={() => {
+                router.push("/checkout");
+                setIsOpen(false);
+              }}
+              className="md:bg-primary bg-[#059669]   cursor-pointer rounded-md text-white absolute bottom-[5rem] md:bottom-[1rem] p-3 w-[90%] mx-auto"
+            >
+              <div className="flex justify-between items-center w-full">
+                <p className="font-medium text-[1.1rem]">Proceed To Checkout</p>
+                <div className="bg-white rounded-md py-2 px-3 text-black font-semibold text-[1.2rem]">
+                  ৳ {totalPrice}
+                </div>
               </div>
             </div>
           </div>

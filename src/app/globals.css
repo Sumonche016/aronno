@@ -36,3 +36,13 @@
     box-shadow: 0 7px 20px 0px #00000012;
 }
 
+.my-drawer{
+  width: 30% !important;
+  box-shadow: 0 10px 25px rgba(60,72,88,.15) !important;
+  
+}
+@media (max-width: 768px) {
+  .my-drawer {
+    width: 100% !important;
+  }
+}
