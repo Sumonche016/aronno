@@ -8,7 +8,7 @@ import { FaShoppingBag } from "react-icons/fa";
 //import styles 👇
 import "react-modern-drawer/dist/index.css";
 import CartComponent from "../CartComponent";
-import { useRouter } from "next/navigation";
+
 import { RxCross2 } from "react-icons/rx";
 import "simplebar-react/dist/simplebar.min.css";
 const HeaderCart = () => {
@@ -16,8 +16,6 @@ const HeaderCart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const refetch = useAppSelector((state) => state.productSlice.refetch);
-
-  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => {
@@ -37,7 +35,7 @@ const HeaderCart = () => {
 
   return (
     <div className="flex justify-end">
-      <div className="flex gap-8 items-center">
+      <div className="flex items-center justify-end">
         <div className="flex gap-6 items-center">
           <div className="relative">
             <BsBagFill className="text-2xl text-cartColor" />
@@ -53,6 +51,7 @@ const HeaderCart = () => {
         </div>
 
         <Drawer
+          lockBackgroundScroll={true}
           open={isOpen}
           onClose={toggleDrawer}
           direction="right"
@@ -72,24 +71,7 @@ const HeaderCart = () => {
             </div>
           </div>
 
-          <CartComponent />
-
-          <div className="flex justify-center ">
-            <div
-              onClick={() => {
-                router.push("/checkout");
-                setIsOpen(false);
-              }}
-              className="md:bg-primary bg-[#059669]   cursor-pointer rounded-md text-white absolute bottom-[5rem] md:bottom-[1rem] p-3 w-[90%] mx-auto"
-            >
-              <div className="flex justify-between items-center w-full">
-                <p className="font-medium text-[1.1rem]">Proceed To Checkout</p>
-                <div className="bg-white rounded-md py-2 px-3 text-black font-semibold text-[1.2rem]">
-                  ৳ {totalPrice}
-                </div>
-              </div>
-            </div>
-          </div>
+          <CartComponent setIsOpen={setIsOpen} />
         </Drawer>
       </div>
     </div>

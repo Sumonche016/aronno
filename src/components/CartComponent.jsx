@@ -6,12 +6,14 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
-const CartComponent = () => {
+import { usePathname, useRouter } from "next/navigation";
+const CartComponent = ({ setIsOpen }) => {
   const [products, setProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const refetch = useAppSelector((state) => state.productSlice.refetch);
   const dispatch = useAppDispatch();
+  const router = useRouter();
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
     setProducts(storedProducts);
@@ -70,57 +72,83 @@ const CartComponent = () => {
     );
     setTotalPrice(newTotalPrice);
   };
+  const pathname = usePathname();
+  console.log(pathname, "need");
   return (
-    <div className="space-y-6 px-6 h-full">
-      <SimpleBar style={{ maxHeight: "80vh" }}>
-        {products?.map((item) => (
-          <div key={item?.id} className="flex items-center justify-between">
-            <div>
-              <Image
-                src={item?.image}
-                alt={item?.name}
-                width={80}
-                height={80}
-                className="rounded-md"
-              />
-            </div>
-            <div className="basis-[50%]">
-              <h1>{item?.name}</h1>
-              <p className="text-sm font-medium">Unit Price: {item.price}</p>
-              <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2 mt-4">
-                  <div
-                    onClick={() => handleIncrementQuantity(item.id)}
-                    className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
-                  >
-                    <AiOutlinePlus />
-                  </div>
+    <div className="h-[80%] flex flex-col">
+      <SimpleBar className="flex-grow custom-scroll">
+        <div className="space-y-6 px-6">
+          {products?.map((item) => (
+            <div key={item?.id} className="flex items-center justify-between">
+              <div>
+                <Image
+                  src={item?.image}
+                  alt={item?.name}
+                  width={80}
+                  height={80}
+                  className="rounded-md"
+                />
+              </div>
+              <div className="basis-[50%]">
+                <h1>{item?.name}</h1>
+                <p className="text-sm font-medium">Unit Price: {item.price}</p>
+                <div className="flex justify-between items-center">
+                  <div className="flex items-center gap-2 mt-4">
+                    <div
+                      onClick={() => handleDecrementQuantity(item.id)}
+                      className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
+                    >
+                      <AiOutlineMinus />
+                    </div>
 
-                  <div className="font-semibold">{item.quantity}</div>
-                  <div
-                    onClick={() => handleDecrementQuantity(item.id)}
-                    className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
-                  >
-                    <AiOutlineMinus />
+                    <div className="font-semibold">{item.quantity}</div>
+
+                    <div
+                      onClick={() => handleIncrementQuantity(item.id)}
+                      className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
+                    >
+                      <AiOutlinePlus />
+                    </div>
+                  </div>
+                  <div>
+                    <h1 className="font-semibold">{item.totalPrice}</h1>
+                    <div className="hidden opacity-0">{totalPrice}</div>
                   </div>
                 </div>
-                <div>
-                  <h1 className="font-semibold">{item.totalPrice}</h1>
-                  <div className="hidden opacity-0">{totalPrice}</div>
+              </div>
+              <div>
+                <div
+                  onClick={() => deleteCartItem(item.id)}
+                  className="bg-[#e3e2e2] p-2 rounded-md cursor-pointer"
+                >
+                  <MdDelete className="text-xl text-red-500 " />
                 </div>
               </div>
             </div>
-            <div>
-              <div
-                onClick={() => deleteCartItem(item.id)}
-                className="bg-[#e3e2e2] p-2 rounded-md cursor-pointer"
-              >
-                <MdDelete className="text-xl text-red-500 " />
-              </div>
+          ))}
+        </div>
+      </SimpleBar>
+
+      <div
+        className={`${
+          pathname.includes("checkout") ? "hidden" : "flex"
+        } justify-center w-full shadow-md px-3 mt-4 md:mt-8`}
+      >
+        <div
+          onClick={() => {
+            router.push("/checkout");
+            setIsOpen(false);
+          }}
+          className="md:bg-primary bg-[#059669] cursor-pointer rounded-md text-white w-full p-3 mx-auto"
+        >
+          <div className="flex justify-between items-center w-full">
+            <p className="font-medium text-[1.1rem]">Proceed To Checkout</p>
+            <div className="bg-white rounded-md py-2 px-3 text-black font-semibold text-[1.2rem]">
+              ৳ {totalPrice}
             </div>
           </div>
-        ))}
-      </SimpleBar>
+        </div>
+      </div>
     </div>
   );
 };

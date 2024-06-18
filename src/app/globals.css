@@ -45,4 +45,13 @@
   .my-drawer {
     width: 100% !important;
   }
+  .custom-scroll {
+    max-height: calc(80vh - 8rem) !important;
+  }
 }
+
+
+.custom-scroll {
+  max-height: calc(80vh - 4rem);
+}
+

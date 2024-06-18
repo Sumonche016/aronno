@@ -3,6 +3,8 @@ import logo from "../assests/Images/logo.jpg";
 import Miniheader from "./Miniheader";
 import HeaderCart from "./ui/HeaderCart";
 import { RxHamburgerMenu } from "react-icons/rx";
+import Link from "next/link";
+
 const Header = () => {
   return (
     <nav className="bg-white nav fixed top-0 left-0 w-full z-50">
@@ -11,7 +13,9 @@ const Header = () => {
           <RxHamburgerMenu className="text-[2rem]" />
         </div>
         <div className="">
-          <Image src={logo} alt="logo" width={70} height={70} />
+          <Link href="/">
+            <Image src={logo} alt="logo" width={70} height={70} />
+          </Link>
         </div>
 
         <div className=" items-center w-[60%] relative hidden md:flex">

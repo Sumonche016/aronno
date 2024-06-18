@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      height: {
+        "calc-mobile": "calc(80vh - 4rem)",
+        "calc-desktop": "calc(80vh - 7rem)",
+      },
       colors: {
         primary: "#095723",
         textPrimary: "#333",
