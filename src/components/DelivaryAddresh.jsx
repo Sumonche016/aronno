@@ -38,7 +38,7 @@ const DeliveryAddress = () => {
                   {...register("name", { required: true })}
                 />
                 {errors?.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500 text-lg">
+                  <span className="label-text-alt text-red-500 text-lg mt-2">
                     নাম অবশ্যই লিখতে হবে
                   </span>
                 )}
@@ -64,7 +64,7 @@ const DeliveryAddress = () => {
                   })}
                 />
                 {errors?.phone && (
-                  <span className="label-text-alt text-red-500 text-lg">
+                  <span className="label-text-alt text-red-500  mt-2">
                     {errors?.phone.message}
                   </span>
                 )}
@@ -88,25 +88,32 @@ const DeliveryAddress = () => {
                 })}
               />
               {errors?.address?.message && (
-                <span className="label-text-alt text-red-500 text-lg">
+                <span className="label-text-alt text-red-500  mt-2">
                   {errors?.address.message}
                 </span>
               )}
             </div>
 
             {/* Delivery location */}
-            <div className="form-control text-center mt-4">
-              <span className="text-base md:text-[1rem] px-10 py-1  text-primary-black   text-center">
+            <div className="form-control  mt-4">
+              <span className="text-base md:text-[1rem] text-primary-black   ">
                 <div className="inline-flex items-center my-4">
                   ডেলিভারি চার্জ
                 </div>
               </span>
+              <div className="flex   gap-6">
+                <input checked type="checkbox" name="" id="" />
+                <label htmlFor="">100tk</label>
+              </div>
+            </div>
 
-              {errors.deliveryLocation && (
-                <span className="label-text-alt text-red-500 text-lg">
-                  অবস্থান নির্বাচন করতে হবে
-                </span>
-              )}
+            <div className="mt-6">
+              <button
+                type="submit"
+                className="bg-primary text-white px-[20px] py-[13px] rounded-md"
+              >
+                অর্ডার করুন
+              </button>
             </div>
           </div>
         </form>
