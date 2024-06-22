@@ -13,9 +13,9 @@ const DeliveryAddress = () => {
   };
 
   return (
-    <div className="checkout">
+    <div className="checkout ">
       {/* shopping address */}
-      <div className="  py-6  px-2">
+      <div className="py-6 px-2">
         <h4 className=" text-red-700 flex font-semibold items-center text-center  py-4 border-b border-borderDark">
           অর্ডার কনফার্ম করতে আপনার নাম, মোবাইল নাম্বর, ঠিকানা লিখে অর্ডার করুন
           বাটনে ক্লিক করুন।
@@ -34,7 +34,7 @@ const DeliveryAddress = () => {
                 <input
                   type="text"
                   placeholder="আপনার নাম লিখুন..."
-                  className="bg-[#E3E2E2] text-sm md:rounded-md focus:outline-primary block w-full p-2.5"
+                  className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                   {...register("name", { required: true })}
                 />
                 {errors?.name?.type === "required" && (
@@ -54,7 +54,7 @@ const DeliveryAddress = () => {
                 <input
                   type="text"
                   placeholder="আপনার মোবাইল নাম্বার লিখুন..."
-                  className="bg-[#E3E2E2] text-sm md:rounded-md focus:outline-primary block w-full p-2.5"
+                  className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                   {...register("phone", {
                     required: "ফোন নম্বর অবশ্যই দিতে হবে",
                     pattern: {
@@ -79,7 +79,7 @@ const DeliveryAddress = () => {
                 rows="5"
                 cols="50"
                 placeholder="আপনার ঠিকানা লিখুন..."
-                className="bg-[#E3E2E2] text-sm md:rounded-md focus:outline-primary block w-full p-2.5"
+                className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                 {...register("address", {
                   maxLength: {
                     value: 200,
@@ -96,7 +96,7 @@ const DeliveryAddress = () => {
 
             {/* Delivery location */}
             <div className="form-control  mt-4">
-              <span className="text-base md:text-[1rem] text-primary-black   ">
+              <span className="text-base md:text-[1rem] text-primary-black">
                 <div className="inline-flex items-center my-4">
                   ডেলিভারি চার্জ
                 </div>
