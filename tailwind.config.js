@@ -16,8 +16,8 @@ module.exports = {
         textPrimary: "#333",
         dark: "#212529",
         cartColor: "#434343",
-        borderPrimar: "#ededed",
-        borderDark: "#e0e0e0",
+        borderPrimary: "#ededed",
+        borderDark: "#c4cdd5",
         card: "#c4cdd5",
       },
       backgroundImage: {
@@ -27,6 +27,8 @@ module.exports = {
       },
       boxShadow: {
         card: "rgba(145, 158, 171, 0.25) 0px 6px 16px",
+        medium:
+          "rgba(145, 158, 171, 0.2) 0px 3px 1px -2px, rgba(145, 158, 171, 0.14) 0px 2px 2px 0px, rgba(145, 158, 171, 0.12) 0px 1px 5px 0px",
       },
     },
   },
