@@ -1,10 +1,20 @@
-export default function Layout({ children }) {
+import Header from "@/components/admin/Header";
+import Sidebar from "@/components/admin/Sidebar";
+
+export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html>
       <body>
-        <h1>header</h1>
-        {children}
-        sidebar
+        <div className="flex bg-whiteBackground">
+          <Sidebar />
+          <div
+            className="w-full min-w-[calc(100vw - 90px)] ml-[90px]"
+            style={{ minWidth: "calc(100vw - 90px)" }}
+          >
+            <Header />
+            <div className="p-4">{children}</div>
+          </div>
+        </div>
       </body>
     </html>
   );
