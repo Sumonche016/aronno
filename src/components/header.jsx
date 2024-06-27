@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../assests/Images/logo.jpg";
+import logo from "../assests/Images/Oroonno-logo.png";
 import Miniheader from "./Miniheader";
 import HeaderCart from "./ui/HeaderCart";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -14,7 +14,7 @@ const Header = () => {
         </div>
         <div className="">
           <Link href="/">
-            <Image src={logo} alt="logo" width={70} height={70} />
+            <Image src={logo} alt="logo" width={120} height={120} />
           </Link>
         </div>
 

@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
         <div className="flex bg-whiteBackground">
           <Sidebar />
           <div
-            className="w-full min-w-[calc(100vw - 90px)] ml-[90px]"
+            className="w-full  ml-[90px]"
             style={{ minWidth: "calc(100vw - 90px)" }}
           >
             <Header />

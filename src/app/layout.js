@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
+import { Baloo_Da_2 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import FooterNav from "@/components/FooterNav";
 import StoreProvider from "./StoreProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Baloo_Da_2({});
 
 export const metadata = {
   title: "Aronno",

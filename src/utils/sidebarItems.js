@@ -2,18 +2,19 @@ import { BsBarChartSteps, BsPeopleFill } from "react-icons/bs";
 import { FiSettings } from "react-icons/fi";
 // import { MdDashboard } from "react-icons/Md";
 import { MdDashboardCustomize } from "react-icons/md";
+import { BsFillPCircleFill } from "react-icons/bs";
 export const sideBarItems = [
   {
-    to: "/",
+    to: "/admin",
     icon: <MdDashboardCustomize className="text-[20px]  " />,
     tooltip: "Dashboard",
     posthogEvent: "Enter Dashboard Page",
     buttonName: "Dashboard in Sidebar",
   },
   {
-    to: "/sequence",
-    icon: <BsBarChartSteps className=" text-[20px]" />,
-    tooltip: "Sequence",
+    to: "/products",
+    icon: <BsFillPCircleFill className=" text-[20px]" />,
+    tooltip: "Product",
     posthogEvent: "Enter Sequence Page",
     buttonName: "Sequence in Sidebar",
   },
