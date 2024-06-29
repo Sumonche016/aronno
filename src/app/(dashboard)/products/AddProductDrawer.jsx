@@ -5,7 +5,7 @@ import Drawer from "react-modern-drawer";
 import { BsBoxFill } from "react-icons/bs";
 
 import dynamic from "next/dynamic";
-const ComponentA = dynamic(() => import('"./AddProduct"'), { ssr: false });
+const ComponentA = dynamic(() => import("./AddProduct"), { ssr: false });
 const AddProductDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => {
