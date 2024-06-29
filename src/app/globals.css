@@ -55,3 +55,13 @@
   max-height: calc(80vh - 4rem);
 }
 
+
+
+.rdw-editor-wrapper{
+  border:1px solid #e5e7eb !important;
+  border-radius: 5px;
+}
+
+.css-dev-only-do-not-override-3rel02.ant-btn-primary{
+  background: #059669 !important;
+}

@@ -73,7 +73,7 @@ const CartComponent = ({ setIsOpen }) => {
     setTotalPrice(newTotalPrice);
   };
   const pathname = usePathname();
-  console.log(pathname, "need");
+
   return (
     <div className="h-[80%] flex flex-col">
       <SimpleBar className="flex-grow custom-scroll">

@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   const active =
-    " flex text-[#006bff] items-center px-4  py-4 bg-[#f1f9ff] rounded-[10px] transition-all duration-200";
+    " flex text-primary items-center px-4  py-4 bg-[#f1f9ff] rounded-[10px] transition-all duration-200";
   const deactive =
     " flex  items-center px-4  py-4  rounded-[12px] transition-all duration-200";
 

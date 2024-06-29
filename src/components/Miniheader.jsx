@@ -16,7 +16,7 @@ const Miniheader = () => {
           <BsHeadset className="text-[2rem] text-cartColor" />
           <div>
             <h1 className="text-muted">Hotline</h1>
-            <span>+880146595410</span>
+            <span>+8801711258558</span>
           </div>
         </div>
       </div>

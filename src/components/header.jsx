@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../assests/Images/Oroonno-logo.png";
+import logo from "../assests/Images/logo-green.png";
 import Miniheader from "./Miniheader";
 import HeaderCart from "./ui/HeaderCart";
 import { RxHamburgerMenu } from "react-icons/rx";
