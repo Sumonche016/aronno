@@ -7,13 +7,13 @@ import BasicInformation from "./BasicInformation";
 import Priceing from "./Priceing";
 import Images from "./Images";
 import Tags from "./Tags";
-// import SaveButton from "../../../utils/Button/SaveButton";
 import makeAnimated from "react-select/animated";
 import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
-import { FaSave } from "react-icons/fa";
+import { FaSave, FaSpinner } from "react-icons/fa";
 import axios from "axios";
 import { customRevalidateTag } from "@/lib/customRevalidate";
+import toast from "react-hot-toast";
 
 const animatedComponents = makeAnimated();
 
@@ -26,16 +26,16 @@ const AddProduct = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [priority, setPriority] = useState(null);
   const [badge, setBadge] = useState("");
-
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-  };
-
   const [selectedCategory, setselectedCategory] = useState([]);
   const [loader, setLoader] = useState(false);
   const productNameRef = useRef(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+  };
 
   const handleMultiselect = (selectedOptions) => {
     const values = selectedOptions.map((option) => option.value);
@@ -66,6 +66,7 @@ const AddProduct = () => {
   };
 
   const onSubmit = async (data) => {
+    setIsSubmitting(true);
     try {
       const html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
       const payload = {
@@ -94,8 +95,8 @@ const AddProduct = () => {
         setImageUrl(null);
         setEditorState(EditorState.createEmpty());
         setLoader(false);
+        toast.success("Product Added");
 
-        alert("Product Added");
         customRevalidateTag("allProducts");
         setPriority(null);
         setBanglaTags([]);
@@ -104,6 +105,8 @@ const AddProduct = () => {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -191,11 +194,16 @@ const AddProduct = () => {
               <div className="flex mt-4">
                 <button
                   form="addProduct"
-                  className="inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-3 rounded-md text-sm text-white bg-emerald-500 border border-transparent active:bg-emerald-600 hover:bg-emerald-600"
+                  className="inline-flex items-center justify-center cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-3 rounded-md text-sm text-white bg-emerald-500 border border-transparent active:bg-emerald-600 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed"
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  <FaSave className="text-white mr-2" />
-                  Save Product
+                  {isSubmitting ? (
+                    <FaSpinner className="animate-spin mr-2" />
+                  ) : (
+                    <FaSave className="mr-2" />
+                  )}
+                  {isSubmitting ? "Saving..." : "Save Product"}
                 </button>
               </div>
             </div>
