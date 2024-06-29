@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const Images = ({ handleImage, uploadProgress, imageUrl }) => {
   return (
     <div className="border-primary rounded-[10px] p-5 mt-6">
@@ -37,7 +39,13 @@ const Images = ({ handleImage, uploadProgress, imageUrl }) => {
         </div>
         {imageUrl && (
           <div className="basis-[30%]">
-            <img src={imageUrl} className="rounded-[10px]" alt="" />
+            <Image
+              src={imageUrl}
+              className="rounded-[10px]"
+              alt="gf"
+              width={100}
+              height={100}
+            />
           </div>
         )}
       </div>
