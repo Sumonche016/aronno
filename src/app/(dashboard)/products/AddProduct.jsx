@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
