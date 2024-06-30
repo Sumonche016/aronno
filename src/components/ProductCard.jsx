@@ -8,23 +8,18 @@ const ProductCard = async () => {
 
   return (
     <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
         {res.data.map((item) => (
           <div
             key={item._id}
             className="bg-white shadow-card border border-card rounded-[8px]"
           >
             <Link href={`/product/${item._id}`}>
-              <div className="p-2">
+              <div className="relative md:h-[15rem] h-[13rem] w-full ">
                 <Image
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{
-                    width: "100%",
-                    borderRadius: "5px",
-                  }}
-                  alt="product image"
+                  fill
+                  alt={item.product_title}
+                  className="p-2 rounded-sm"
                   src={item.product_images}
                 />
               </div>

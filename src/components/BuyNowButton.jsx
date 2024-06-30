@@ -5,7 +5,9 @@ import { updateRefetch } from "@/lib/ProductSlice/productSlice";
 
 const BuyNowButton = ({ product }) => {
   const dispatch = useAppDispatch();
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     addProductToCart(product);
     dispatch(updateRefetch());
   };

@@ -73,7 +73,6 @@ const ProductsTable = ({ products }) => {
           width={80}
           height={80}
           className="rounded-md"
-          objectFit="cover"
         />
       ),
     },

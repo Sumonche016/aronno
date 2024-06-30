@@ -17,6 +17,7 @@ const SingleProductCard = ({ product }) => {
               sizes="100vw"
               style={{
                 width: "100%",
+
                 borderRadius: "5px",
               }}
               alt="product image"
@@ -37,7 +38,12 @@ const SingleProductCard = ({ product }) => {
             <div className="mt-3">
               <div className="flex gap-2 items-center font-medium">
                 <h1>Category:</h1>
-                <h1 className="text-[#637381]">Bonsai</h1>
+
+                {product.data.product_category.map((item) => (
+                  <h1 key={item} className="text-[#637381]">
+                    {product.data.product_category}
+                  </h1>
+                ))}
               </div>
             </div>
             <div className="mt-3">

@@ -3,7 +3,7 @@ import Slider from "./Slider";
 
 const HeroSection = () => {
   return (
-    <div className="container md:mt-4 mt-2 mx-auto  pt-[10rem]">
+    <div className="container  mx-auto  md:pt-[10rem] pt-[9rem]">
       <div className="flex">
         <SideNav />
         <Slider />
