@@ -67,6 +67,7 @@ const FooterNav = () => {
       <Modal
         title="Contact Options"
         visible={isModalVisible}
+        centered={true}
         onCancel={handleCancel}
         footer={null}
       >

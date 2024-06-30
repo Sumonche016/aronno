@@ -12,6 +12,7 @@ const inter = Baloo_Da_2({ subsets: ["bengali"] });
 const FooterNav = dynamic(() => import("../components/FooterNav.jsx"), {
   ssr: false,
 });
+
 export const metadata = {
   title: "Aronno",
   description: "Stay Green Stay Trusted",
