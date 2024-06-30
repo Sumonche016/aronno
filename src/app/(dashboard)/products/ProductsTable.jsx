@@ -1,18 +1,17 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { Table, Button, Space, Modal } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { customRevalidateTag } from "@/lib/customRevalidate";
-
+import { useRouter } from "next/navigation";
 const ProductsTable = ({ products }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [deletingProductId, setDeletingProductId] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const handleEdit = (key) => {
-    console.log("Edit product with key:", key);
+  const router = useRouter();
+  const handleEdit = (id) => {
+    router.push(`/products/edit/${id}`);
   };
 
   const showDeleteModal = (id) => {

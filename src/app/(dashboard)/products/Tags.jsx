@@ -44,20 +44,20 @@ const Tags = ({ englishTag, setEnglishTags, banglaTags, setBanglaTags }) => {
 
   return (
     <div className="bg-white border-primary rounded-[10px] p-5">
-      <h1 className=" mb-5 ">Tags:</h1>
+      <h1 className="mb-5">Tags:</h1>
 
-      <div className="flex gap-2 text-[15px] font-medium">
+      <div className="flex flex-wrap gap-2 text-[15px] font-medium mb-3">
         {englishTag.length !== 0 &&
           englishTag?.map((element) => {
             return (
               <div
                 key={element.id}
-                className="bg-[#E6E6E6]  rounded-[2px] flex items-center"
+                className="bg-[#E6E6E6] rounded-md flex items-center mb-2"
               >
                 <p className="p-[3px] pl-[6px]"> {element.tag}</p>
                 <div
                   onClick={() => handleDeleteTag(element.id)}
-                  className="hover:bg-[#FFBDAD] hover:text-[#DE350B] h-full flex justify-center items-center"
+                  className="hover:bg-[#FFBDAD] hover:text-[#DE350B] cursor-pointer h-full flex justify-center items-center"
                 >
                   <RxCross2 className="hover:text-[#DE350B] p-[4px]" />
                 </div>
@@ -67,7 +67,7 @@ const Tags = ({ englishTag, setEnglishTags, banglaTags, setBanglaTags }) => {
       </div>
 
       <div>
-        <form onsubmit={handleSubmit(handleEnglishSubmit)}>
+        <form onSubmit={handleSubmit(handleEnglishSubmit)}>
           <div>
             <label
               htmlFor="englishTag"
@@ -79,7 +79,7 @@ const Tags = ({ englishTag, setEnglishTags, banglaTags, setBanglaTags }) => {
             <input
               onKeyDown={handleKeyDownEnglish}
               {...register("englishTag")}
-              class="block w-full h-12 border px-3 py-1 text-sm focus:outline-none  leading-5 rounded-md bg-white   border-gray-200 "
+              className="block w-full h-12 border px-3 py-1 text-sm focus:outline-none leading-5 rounded-md bg-white border-gray-200"
               type="text"
               id="englishTag"
             />
@@ -89,27 +89,27 @@ const Tags = ({ englishTag, setEnglishTags, banglaTags, setBanglaTags }) => {
 
       {/* for bangla  */}
 
-      <form onsubmit={handleSubmit(handleBanglaSubmit)} className="mt-4">
+      <form onSubmit={handleSubmit(handleBanglaSubmit)} className="mt-4">
         <div>
           <label
-            htmlFor="englishTag"
+            htmlFor="banglaTag"
             className="text-[0.875rem] mb-1 inline-block font-medium"
           >
             Bangla
           </label>
 
-          <div className="flex my-2 gap-2 text-[15px] font-medium">
+          <div className="flex flex-wrap gap-2 text-[15px] font-medium mb-3">
             {banglaTags.length !== 0 &&
               banglaTags?.map((element) => {
                 return (
                   <div
                     key={element.id}
-                    className="bg-[#E6E6E6]  rounded-[2px] flex items-center"
+                    className="bg-[#E6E6E6] rounded-md flex items-center mb-2"
                   >
                     <p className="p-[3px] pl-[6px]"> {element.tag}</p>
                     <div
                       onClick={() => handleDeleteTagBangla(element.id)}
-                      className="hover:bg-[#FFBDAD] hover:text-[#DE350B] h-full flex justify-center items-center"
+                      className="hover:bg-[#FFBDAD] hover:text-[#DE350B] cursor-pointer h-full flex justify-center items-center"
                     >
                       <RxCross2 className="hover:text-[#DE350B] p-[4px]" />
                     </div>
@@ -121,7 +121,7 @@ const Tags = ({ englishTag, setEnglishTags, banglaTags, setBanglaTags }) => {
           <input
             onKeyDown={handleKeyDownBangla}
             {...register("banglaTag")}
-            class="block w-full h-12 border px-3 py-1 text-sm focus:outline-none  leading-5 rounded-md bg-white   border-gray-200 "
+            className="block w-full h-12 border px-3 py-1 text-sm focus:outline-none leading-5 rounded-md bg-white border-gray-200"
             type="text"
             id="banglaTag"
           />
