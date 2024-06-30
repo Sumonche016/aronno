@@ -1,15 +1,13 @@
 "use client";
-
 import { useState } from "react";
 import { FaHome, FaPhoneSquareAlt } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
 import { BiSolidCategory } from "react-icons/bi";
 import { Modal, Button } from "antd";
-import {
-  WhatsAppOutlined,
-  MessageOutlined,
-  PhoneOutlined,
-} from "@ant-design/icons";
+import whatsapp from "../assests/Images/whatsapp.png";
+import messenger from "../assests/Images/messnger.png";
+import call from "../assests/Images/call.png";
+import Image from "next/image";
 
 const FooterNav = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -73,21 +71,25 @@ const FooterNav = () => {
       >
         <div className="flex flex-col space-y-4">
           <Button
-            icon={<WhatsAppOutlined />}
+            icon={
+              <Image src={whatsapp} alt="whatsapp" width={30} height={30} />
+            }
             size="large"
             onClick={handleWhatsAppClick}
           >
             WhatsApp Message
           </Button>
           <Button
-            icon={<MessageOutlined />}
+            icon={
+              <Image src={messenger} alt="whatsapp" width={30} height={30} />
+            }
             size="large"
             onClick={handleMessengerClick}
           >
             Messenger
           </Button>
           <Button
-            icon={<PhoneOutlined />}
+            icon={<Image src={call} alt="whatsapp" width={30} height={30} />}
             size="large"
             onClick={handleDirectCallClick}
           >
