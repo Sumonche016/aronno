@@ -15,7 +15,7 @@ const ProductCard = async () => {
             className="bg-white shadow-card border border-card rounded-[8px]"
           >
             <Link href={`/product/${item._id}`}>
-              <div className="relative md:h-[15rem] h-[13rem] w-full ">
+              <div className="relative md:h-[15rem] h-[12rem] w-full ">
                 <Image
                   fill
                   alt={item.product_title}
