@@ -5,7 +5,7 @@ import Link from "next/link";
 import CategoryTabs from "./CategoryTabs";
 
 const ProductCard = async ({ searchParams }) => {
-  let limit = Number(searchParams.limit);
+  let limit = Number(searchParams.limit) || 20;
   let category = searchParams.category;
 
   let res = await getAllProducts(searchParams);
