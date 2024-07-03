@@ -3,11 +3,20 @@ import Image from "next/image";
 import BuyNowButton from "./BuyNowButton";
 import Link from "next/link";
 
-const ProductCard = async () => {
-  let res = await getAllProducts();
+const ProductCard = async ({ searchParams }) => {
+  let limit = Number(searchParams.limit);
+  let category = searchParams.category;
+
+  let res = await getAllProducts(searchParams);
 
   return (
     <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
+      <div className="flex justify-between items-center">
+        <h1 className="text-lg sm:text-xl md:text-3xl text-primary-text font-semibold pb-1 md:pb-3 text-[#212b36]">
+          আমাদের পণ্যসমূহ
+        </h1>
+        {/* <CategoryTabs /> */}
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
         {res.data.map((item) => (
           <div
@@ -53,6 +62,18 @@ const ProductCard = async () => {
           </div>
         ))}
       </div>
+
+      {Math.round(res.totalProductLength / 20) >= limit / 20 && (
+        <div className="flex justify-center items-center mt-6">
+          <Link
+            href={`/?category=&limit=${limit ? limit + 20 : 40}&skipFrom=0`}
+          >
+            <button className="px-8 py-3 bg-[#059669] text-white font-medium  rounded-md shadow-sm">
+              See More
+            </button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

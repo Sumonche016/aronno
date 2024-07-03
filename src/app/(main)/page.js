@@ -1,12 +1,13 @@
 import HeroSection from "@/components/HeroSection";
 import ProductCard from "@/components/ProductCard";
 
-const page = () => {
+const page = ({ searchParams }) => {
+  console.log(searchParams, "need");
   return (
     <div>
       <HeroSection />
       {/* <FeatureCategory /> */}
-      <ProductCard />
+      <ProductCard searchParams={searchParams} />
     </div>
   );
 };
