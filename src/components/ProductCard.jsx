@@ -2,6 +2,7 @@ import { getAllProducts } from "@/lib/getAllProducts";
 import Image from "next/image";
 import BuyNowButton from "./BuyNowButton";
 import Link from "next/link";
+import CategoryTabs from "./CategoryTabs";
 
 const ProductCard = async ({ searchParams }) => {
   let limit = Number(searchParams.limit);
@@ -11,11 +12,11 @@ const ProductCard = async ({ searchParams }) => {
 
   return (
     <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
-      <div className="flex justify-between items-center">
-        <h1 className="text-lg sm:text-xl md:text-3xl text-primary-text font-semibold pb-1 md:pb-3 text-[#212b36]">
+      <div className="md:flex justify-between items-center mb-6">
+        <h1 className=" text-center mb-4  text-3xl text-primary-text font-semibold  text-[#212b36]">
           আমাদের পণ্যসমূহ
         </h1>
-        {/* <CategoryTabs /> */}
+        <CategoryTabs searchParams={searchParams} />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
         {res.data.map((item) => (
@@ -66,7 +67,9 @@ const ProductCard = async ({ searchParams }) => {
       {Math.round(res.totalProductLength / 20) >= limit / 20 && (
         <div className="flex justify-center items-center mt-6">
           <Link
-            href={`/?category=&limit=${limit ? limit + 20 : 40}&skipFrom=0`}
+            href={`/?category=${category}&limit=${
+              limit ? limit + 20 : 40
+            }&skipFrom=0`}
           >
             <button className="px-8 py-3 bg-[#059669] text-white font-medium  rounded-md shadow-sm">
               See More
