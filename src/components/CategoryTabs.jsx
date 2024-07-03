@@ -20,7 +20,8 @@ const CategoryTabs = ({ searchParams }) => {
         >
           <button
             className={`rounded-lg px-[22px] md:px-[27px] py-[8px] font-medium ${
-              searchParams.category === category.value
+              searchParams.category === category.value ||
+              (!searchParams.category && category.value === "")
                 ? "bg-[#059669] text-white"
                 : "bg-white"
             }`}
