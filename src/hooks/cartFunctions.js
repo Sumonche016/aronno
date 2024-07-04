@@ -5,12 +5,12 @@ export const addProductToCart = (productItem) => {
     const products = localStorage.getItem("products");
     const allProdcuts = products ? JSON.parse(products) : [];
     const existingProduct = allProdcuts.find(
-      (product) => product.id === productItem.id
+      (product) => product.id === productItem._id
     );
 
     if (existingProduct) {
       const restProduct = allProdcuts.filter(
-        (product) => product.id !== productItem.id
+        (product) => product.id !== productItem._id
       );
 
       const newProduct = {

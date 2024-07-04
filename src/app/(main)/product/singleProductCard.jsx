@@ -56,7 +56,7 @@ const SingleProductCard = ({ product }) => {
               <div className="flex gap-2 items-center font-medium">
                 <h1>Discount:</h1>
                 <h1 className="text-[#637381]">
-                  $21.0 <span className="text-red-500">(35% Discount)</span>
+                  0.0 <span className="text-red-500">(0% Discount)</span>
                 </h1>
               </div>
             </div>
