@@ -2,6 +2,7 @@ import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { JSDOM } from "jsdom";
 import DOMPurify from "dompurify";
+import AddToCart from "./[productId]/AddToCart";
 
 const window = new JSDOM("").window;
 const DOMPurifyServer = DOMPurify(window);
@@ -69,14 +70,8 @@ const SingleProductCard = ({ product }) => {
                 <AiOutlinePlus />
               </div>
             </div>
-            <div className="mt-6 flex items-center gap-4">
-              <button className="px-2 py-3 bg-primary text-white font-medium w-1/2 rounded-md shadow-sm">
-                Add To Cart
-              </button>
-              <button className="px-2 py-3 bg-[#059669] text-white font-medium w-1/2 rounded-md shadow-sm">
-                Buy Now
-              </button>
-            </div>
+
+            <AddToCart product={product} />
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../assests/Images/logo.png";
+import logo from "../../assests/Images/logo-green.png";
 
 import { usePathname } from "next/navigation";
 import { sideBarItems } from "@/utils/sidebarItems";

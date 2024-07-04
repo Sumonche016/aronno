@@ -8,6 +8,7 @@ import whatsapp from "../assests/Images/whatsapp.png";
 import messenger from "../assests/Images/messnger.png";
 import call from "../assests/Images/call.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const FooterNav = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -33,6 +34,9 @@ const FooterNav = () => {
   const handleDirectCallClick = () => {
     window.location.href = `tel:${phoneNumber}`;
   };
+  const handleCheckout = () => {
+    // router.push("/checkout");
+  };
 
   return (
     <>
@@ -47,10 +51,13 @@ const FooterNav = () => {
               <BiSolidCategory />
               <h1 className="mt-2">Category</h1>
             </li>
-            <li className="flex flex-col justify-center items-center cursor-pointer">
-              <FaBagShopping />
-              <h1 className="mt-2">Cart</h1>
-            </li>
+            <Link href={"/checkout"}>
+              <li className="flex flex-col justify-center items-center cursor-pointer">
+                <FaBagShopping />
+                <h1 className="mt-2">Cart</h1>
+              </li>
+            </Link>
+
             <li
               className="flex flex-col justify-center items-center cursor-pointer"
               onClick={showModal}

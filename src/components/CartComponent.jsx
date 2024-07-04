@@ -78,54 +78,62 @@ const CartComponent = ({ setIsOpen }) => {
     <div className="h-[80%] flex flex-col">
       <SimpleBar className="flex-grow custom-scroll">
         <div className="space-y-6 px-6">
-          {products?.map((item) => (
-            <div key={item?.id} className="flex items-center justify-between">
-              <div>
-                <Image
-                  src={item?.image}
-                  alt={item?.name}
-                  width={80}
-                  height={80}
-                  className="rounded-md"
-                />
-              </div>
-              <div className="basis-[50%]">
-                <h1>{item?.name}</h1>
-                <p className="text-sm font-medium">Unit Price: {item.price}</p>
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center gap-2 mt-4">
-                    <div
-                      onClick={() => handleDecrementQuantity(item.id)}
-                      className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
-                    >
-                      <AiOutlineMinus />
+          {products.length === 0 ? (
+            <h1 className="text-xl text-red-700 font-semibold ">
+              There is no prodcuts on the cart 😒
+            </h1>
+          ) : (
+            products?.map((item) => (
+              <div key={item?.id} className="flex items-center justify-between">
+                <div>
+                  <Image
+                    src={item?.image}
+                    alt={item?.name}
+                    width={80}
+                    height={80}
+                    className="rounded-md"
+                  />
+                </div>
+                <div className="basis-[50%]">
+                  <h1>{item?.name}</h1>
+                  <p className="text-sm font-medium">
+                    Unit Price: {item.price}
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2 mt-4">
+                      <div
+                        onClick={() => handleDecrementQuantity(item.id)}
+                        className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
+                      >
+                        <AiOutlineMinus />
+                      </div>
+
+                      <div className="font-semibold">{item.quantity}</div>
+
+                      <div
+                        onClick={() => handleIncrementQuantity(item.id)}
+                        className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
+                      >
+                        <AiOutlinePlus />
+                      </div>
                     </div>
-
-                    <div className="font-semibold">{item.quantity}</div>
-
-                    <div
-                      onClick={() => handleIncrementQuantity(item.id)}
-                      className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
-                    >
-                      <AiOutlinePlus />
+                    <div>
+                      <h1 className="font-semibold">{item.totalPrice}</h1>
+                      <div className="hidden opacity-0">{totalPrice}</div>
                     </div>
                   </div>
-                  <div>
-                    <h1 className="font-semibold">{item.totalPrice}</h1>
-                    <div className="hidden opacity-0">{totalPrice}</div>
+                </div>
+                <div>
+                  <div
+                    onClick={() => deleteCartItem(item.id)}
+                    className="bg-[#e3e2e2] p-2 rounded-md cursor-pointer"
+                  >
+                    <MdDelete className="text-xl text-red-500 " />
                   </div>
                 </div>
               </div>
-              <div>
-                <div
-                  onClick={() => deleteCartItem(item.id)}
-                  className="bg-[#e3e2e2] p-2 rounded-md cursor-pointer"
-                >
-                  <MdDelete className="text-xl text-red-500 " />
-                </div>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </SimpleBar>
 

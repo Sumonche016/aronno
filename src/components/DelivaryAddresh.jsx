@@ -1,22 +1,59 @@
 "use client";
 
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { FaSave, FaSpinner } from "react-icons/fa";
+
 const DeliveryAddress = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [productCount, setProductCount] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    setProductCount(products.length);
+  }, []);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    setIsSubmitting(true);
+
+    // Prepare order data
+    const orderData = {
+      address: data,
+      product: JSON.parse(localStorage.getItem("products")),
+    };
+
+    try {
+      const response = await axios.post(
+        "https://aronno.onrender.com/odder/new-odder",
+        orderData
+      );
+
+      const result = await response.json();
+
+      // Optionally clear the cart and form
+      // localStorage.removeItem("products");
+      if (result.data.success) {
+        toast.success("Order added successfully");
+      }
+    } catch (error) {
+      console.error("There was a problem with the fetch operation:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="checkout ">
+    <div className="checkout">
       {/* shopping address */}
       <div className="py-6 px-2">
-        <h4 className=" text-red-700 flex font-semibold items-center text-center  py-4 border-b border-borderDark">
+        <h4 className="text-red-700 flex font-semibold items-center text-center py-4 border-b border-borderDark">
           অর্ডার কনফার্ম করতে আপনার নাম, মোবাইল নাম্বর, ঠিকানা লিখে অর্ডার করুন
           বাটনে ক্লিক করুন।
         </h4>
@@ -38,7 +75,7 @@ const DeliveryAddress = () => {
                   {...register("name", { required: true })}
                 />
                 {errors?.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500 text-lg mt-2">
+                  <span className="label-text-alt text-red-500 mt-2">
                     নাম অবশ্যই লিখতে হবে
                   </span>
                 )}
@@ -64,7 +101,7 @@ const DeliveryAddress = () => {
                   })}
                 />
                 {errors?.phone && (
-                  <span className="label-text-alt text-red-500  mt-2">
+                  <span className="label-text-alt text-red-500 mt-2">
                     {errors?.phone.message}
                   </span>
                 )}
@@ -88,20 +125,20 @@ const DeliveryAddress = () => {
                 })}
               />
               {errors?.address?.message && (
-                <span className="label-text-alt text-red-500  mt-2">
+                <span className="label-text-alt text-red-500 mt-2 inline-block">
                   {errors?.address.message}
                 </span>
               )}
             </div>
 
             {/* Delivery location */}
-            <div className="form-control  mt-4">
+            <div className="form-control mt-4">
               <span className="text-base md:text-[1rem] text-primary-black">
                 <div className="inline-flex items-center my-4">
                   ডেলিভারি চার্জ
                 </div>
               </span>
-              <div className="flex   gap-6">
+              <div className="flex gap-6">
                 <input checked type="checkbox" name="" id="" />
                 <label htmlFor="">100tk</label>
               </div>
@@ -110,9 +147,15 @@ const DeliveryAddress = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                className="bg-primary text-white px-[20px] py-[13px] rounded-md"
+                className="bg-primary inline-flex items-center justify-center text-white px-[20px] py-[13px] rounded-md"
+                disabled={productCount === 0 || isSubmitting} // Disable button if no products or while submitting
               >
-                অর্ডার করুন
+                {isSubmitting ? (
+                  <FaSpinner className="animate-spin mr-2" />
+                ) : (
+                  <FaSave className="mr-2" />
+                )}
+                {isSubmitting ? "অর্ডার হচ্ছে..." : "অর্ডার করুন"}
               </button>
             </div>
           </div>

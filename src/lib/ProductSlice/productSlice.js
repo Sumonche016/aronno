@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   refetch: false,
+  isDrawerOpen: false, // Add drawer state
 };
 
 export const productSlice = createSlice({
@@ -11,10 +12,16 @@ export const productSlice = createSlice({
     updateRefetch: (state) => {
       state.refetch = !state.refetch;
     },
+    toggleDrawer: (state) => {
+      state.isDrawerOpen = !state.isDrawerOpen;
+    },
+    closeDrawer: (state) => {
+      state.isDrawerOpen = false;
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { updateRefetch } = productSlice.actions;
+export const { updateRefetch, toggleDrawer, closeDrawer } =
+  productSlice.actions;
 
 export default productSlice.reducer;

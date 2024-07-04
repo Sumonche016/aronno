@@ -4,6 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { MdDashboardCustomize } from "react-icons/md";
 import { BsFillPCircleFill } from "react-icons/bs";
 import { BsDisplay } from "react-icons/bs";
+import { IoBagCheck } from "react-icons/io5";
 export const sideBarItems = [
   {
     to: "/admin",
@@ -27,8 +28,8 @@ export const sideBarItems = [
     buttonName: "Prospect in Sidebar",
   },
   {
-    to: "/template",
-    icon: <BsBarChartSteps className=" text-[20px]" />,
+    to: "/order",
+    icon: <IoBagCheck className=" text-[20px]" />,
     tooltip: "Template",
   },
   {
