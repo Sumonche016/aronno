@@ -25,13 +25,13 @@ const DeliveryAddress = () => {
 
     // Prepare order data
     const orderData = {
-      address: data,
       product: JSON.parse(localStorage.getItem("products")),
+      address: data,
     };
 
     try {
       const response = await axios.post(
-        "https://aronno.onrender.com/odder/new-odder",
+        "http://localhost:5000/odder/new-odder",
         orderData
       );
 
@@ -148,7 +148,7 @@ const DeliveryAddress = () => {
               <button
                 type="submit"
                 className="bg-primary inline-flex items-center justify-center text-white px-[20px] py-[13px] rounded-md"
-                disabled={productCount === 0 || isSubmitting} // Disable button if no products or while submitting
+                // disabled={productCount === 0 || isSubmitting} // Disable button if no products or while submitting
               >
                 {isSubmitting ? (
                   <FaSpinner className="animate-spin mr-2" />
