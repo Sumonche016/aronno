@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import LandScape from "@/components/LandScape";
 import ProductCard from "@/components/ProductCard";
 
 const page = ({ searchParams }) => {
@@ -6,7 +7,7 @@ const page = ({ searchParams }) => {
   return (
     <div>
       <HeroSection />
-      {/* <FeatureCategory /> */}
+      <LandScape />
       <ProductCard searchParams={searchParams} />
     </div>
   );

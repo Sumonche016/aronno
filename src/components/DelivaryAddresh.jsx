@@ -1,6 +1,7 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -14,7 +15,7 @@ const DeliveryAddress = () => {
   } = useForm();
   const [productCount, setProductCount] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     setProductCount(products.length);
@@ -38,7 +39,7 @@ const DeliveryAddress = () => {
       // Optionally clear the cart and form
       // localStorage.removeItem("products");
       if (response.data.success) {
-        console.log("hii");
+        router.push("/");
         toast.success("Order added successfully");
       }
     } catch (error) {
@@ -70,7 +71,7 @@ const DeliveryAddress = () => {
                 <input
                   type="text"
                   placeholder="আপনার নাম লিখুন..."
-                  className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
+                  className="bg-[#E3E2E2]  rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                   {...register("name", { required: true })}
                 />
                 {errors?.name?.type === "required" && (
@@ -82,7 +83,7 @@ const DeliveryAddress = () => {
               {/* your phone number */}
               <div className="form-control">
                 <label className="label">
-                  <span className="block mb-1.5 text-sm font-medium">
+                  <span className="block mb-1.5  font-medium">
                     মোবাইল
                     <span className="text-red-700 text-lg">*</span>
                   </span>
@@ -90,7 +91,7 @@ const DeliveryAddress = () => {
                 <input
                   type="text"
                   placeholder="আপনার মোবাইল নাম্বার লিখুন..."
-                  className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
+                  className="bg-[#E3E2E2] rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                   {...register("phone", {
                     required: "ফোন নম্বর অবশ্যই দিতে হবে",
                     pattern: {
@@ -109,13 +110,13 @@ const DeliveryAddress = () => {
             {/* contact address */}
             <div className="form-control mt-4">
               <label className="label">
-                <span className="block mb-1.5 text-sm font-medium">ঠিকানা</span>
+                <span className="block mb-1.5  font-medium">ঠিকানা</span>
               </label>
               <textarea
                 rows="5"
                 cols="50"
                 placeholder="আপনার ঠিকানা লিখুন..."
-                className="bg-[#E3E2E2] text-sm rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
+                className="bg-[#E3E2E2]  rounded-md md:rounded-md focus:outline-primary block w-full p-2.5"
                 {...register("address", {
                   maxLength: {
                     value: 200,
