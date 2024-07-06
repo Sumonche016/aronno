@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
           <Sidebar />
           <div
             className="w-full  ml-[90px]"
-            style={{ minWidth: "calc(100vw - 90px)" }}
+            style={{ minWidth: "calc(-114px + 100vw)" }}
           >
             <Header />
             <div className="p-4">{children}</div>

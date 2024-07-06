@@ -11,7 +11,7 @@ const BuyNowButton = ({ product }) => {
   useEffect(() => {
     // Check if the product is already in the cart when the component mounts
     const products = JSON.parse(localStorage.getItem("products")) || [];
-    const existingProduct = products.find((p) => p.id === product._id);
+    const existingProduct = products.find((p) => p._id === product._id);
     setIsInCart(!!existingProduct);
   }, [product._id, refetch]);
 
@@ -31,7 +31,7 @@ const BuyNowButton = ({ product }) => {
       const allProducts = products ? JSON.parse(products) : [];
 
       const updatedProducts = allProducts.filter(
-        (productDelete) => productDelete.id !== product._id
+        (productDelete) => productDelete._id !== product._id
       );
 
       localStorage.setItem("products", JSON.stringify(updatedProducts));

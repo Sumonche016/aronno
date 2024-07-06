@@ -31,15 +31,14 @@ const DeliveryAddress = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/odder/new-odder",
+        `${process.env.NEXT_PUBLIC_SEVER_API}/odder/new-odder`,
         orderData
       );
 
-      const result = await response.json();
-
       // Optionally clear the cart and form
       // localStorage.removeItem("products");
-      if (result.data.success) {
+      if (response.data.success) {
+        console.log("hii");
         toast.success("Order added successfully");
       }
     } catch (error) {
@@ -148,7 +147,7 @@ const DeliveryAddress = () => {
               <button
                 type="submit"
                 className="bg-primary inline-flex items-center justify-center text-white px-[20px] py-[13px] rounded-md"
-                // disabled={productCount === 0 || isSubmitting} // Disable button if no products or while submitting
+                disabled={productCount === 0 || isSubmitting} // Disable button if no products or while submitting
               >
                 {isSubmitting ? (
                   <FaSpinner className="animate-spin mr-2" />

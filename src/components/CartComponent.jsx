@@ -26,7 +26,7 @@ const CartComponent = ({ setIsOpen }) => {
   }, [refetch]);
 
   const deleteCartItem = (id) => {
-    const filterProduct = products.filter((product) => product.id !== id);
+    const filterProduct = products.filter((product) => product._id !== id);
     setProducts(filterProduct);
     localStorage.setItem("products", JSON.stringify(filterProduct));
     updateTotalPrice(filterProduct);
@@ -35,7 +35,7 @@ const CartComponent = ({ setIsOpen }) => {
 
   const handleIncrementQuantity = (id) => {
     const updatedProducts = products.map((product) =>
-      product.id === id
+      product._id === id
         ? {
             ...product,
             quantity: product.quantity + 1,
@@ -51,7 +51,7 @@ const CartComponent = ({ setIsOpen }) => {
 
   const handleDecrementQuantity = (id) => {
     const updatedProducts = products.map((product) =>
-      product.id === id && product.quantity > 1
+      product._id === id && product.quantity > 1
         ? {
             ...product,
             quantity: product.quantity - 1,
@@ -84,7 +84,10 @@ const CartComponent = ({ setIsOpen }) => {
             </h1>
           ) : (
             products?.map((item) => (
-              <div key={item?.id} className="flex items-center justify-between">
+              <div
+                key={item?._id}
+                className="flex items-center justify-between"
+              >
                 <div>
                   <Image
                     src={item?.image}
@@ -102,7 +105,7 @@ const CartComponent = ({ setIsOpen }) => {
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2 mt-4">
                       <div
-                        onClick={() => handleDecrementQuantity(item.id)}
+                        onClick={() => handleDecrementQuantity(item._id)}
                         className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
                       >
                         <AiOutlineMinus />
@@ -111,7 +114,7 @@ const CartComponent = ({ setIsOpen }) => {
                       <div className="font-semibold">{item.quantity}</div>
 
                       <div
-                        onClick={() => handleIncrementQuantity(item.id)}
+                        onClick={() => handleIncrementQuantity(item._id)}
                         className="bg-[#F5F5F5] p-2 rounded-md cursor-pointer"
                       >
                         <AiOutlinePlus />
@@ -125,7 +128,7 @@ const CartComponent = ({ setIsOpen }) => {
                 </div>
                 <div>
                   <div
-                    onClick={() => deleteCartItem(item.id)}
+                    onClick={() => deleteCartItem(item._id)}
                     className="bg-[#e3e2e2] p-2 rounded-md cursor-pointer"
                   >
                     <MdDelete className="text-xl text-red-500 " />

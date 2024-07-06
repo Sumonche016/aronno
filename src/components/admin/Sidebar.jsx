@@ -7,6 +7,7 @@ import logo from "../../assests/Images/logo-green.png";
 import { usePathname } from "next/navigation";
 import { sideBarItems } from "@/utils/sidebarItems";
 
+import { Tooltip } from "antd";
 const Sidebar = () => {
   const pathname = usePathname();
 
@@ -25,13 +26,15 @@ const Sidebar = () => {
         <ul className="font-500 px-5 mt-6">
           {sideBarItems?.map((item, index) => (
             <li className={` mt-2 transition-all duration-200  `} key={index}>
-              <Link
-                className={` ${pathname === item.to ? active : deactive}`}
-                href={item.to}
-              >
-                {/* <Tooltip style={{}} place="right" id={item.tooltip} /> */}
-                {item.icon}
-              </Link>
+              <Tooltip placement="left" title={item.tooltip}>
+                <Link
+                  className={` ${pathname === item.to ? active : deactive}`}
+                  href={item.to}
+                >
+                  {/* <Tooltip style={{}} place="right" id={item.tooltip} /> */}
+                  {item.icon}
+                </Link>
+              </Tooltip>
             </li>
           ))}
         </ul>
