@@ -65,3 +65,8 @@
 .css-dev-only-do-not-override-3rel02.ant-btn-primary{
   background: #059669 !important;
 }
+
+
+.shadow-deep{
+  box-shadow: 0 4px 30px 8px rgba(60,72,88,.15)!important;
+}

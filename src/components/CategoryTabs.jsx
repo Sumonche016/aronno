@@ -1,15 +1,8 @@
 import Link from "next/link";
 
-const CategoryTabs = ({ searchParams }) => {
-  const categories = [
-    { name: "সকল পণ্য", value: "" },
-    { name: "ফল গাছ", value: "ফল গাছ" },
-    { name: "ফুল গাছ", value: "ফুল গাছ" },
-    { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
-  ];
-
+const CategoryTabs = ({ searchParams, categories }) => {
   return (
-    <div className="flex items-center justify-between md:justify-end md:gap-4 gap-2">
+    <div className="flex flex-wrap items-center justify-center md:justify-end md:gap-4 gap-2">
       {categories.map((category) => (
         <Link
           scroll={false}
@@ -19,7 +12,7 @@ const CategoryTabs = ({ searchParams }) => {
           }&skip=0`}
         >
           <button
-            className={`rounded-lg text-[13px] md:text-[1.1rem] px-[18px] md:px-[27px] py-[8px] font-medium ${
+            className={`rounded-lg text-[13px] md:text-[.95rem] px-[18px] md:px-[27px] py-[8px] font-medium ${
               searchParams.category === category.value ||
               (!searchParams.category && category.value === "")
                 ? "bg-[#059669] text-white"

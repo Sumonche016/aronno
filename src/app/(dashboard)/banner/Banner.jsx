@@ -1,56 +1,8 @@
 "use client";
-
-import { useState } from "react";
-
-import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
 
-import Slider from "@/components/Slider";
-import {
-  useAddBannerMutation,
-  useDeleteBannerMutation,
-  useGetAllBannerQuery,
-} from "@/lib/ClientApi/ClientApi";
-
 const Banner = () => {
-  const {
-    data: bannerData,
-    isLoading: bannerIsLoading,
-    isError: bannerIsError,
-  } = useGetAllBannerQuery();
-
-  // decide delete table data render
-  let deleteTableData = null;
-  if (bannerIsLoading) {
-    deleteTableData = <div>Loading</div>;
-  }
-  if (!bannerIsLoading && bannerIsError) {
-    deleteTableData = <div>something is wrong</div>;
-  }
-  if (!bannerIsLoading && bannerData?.result.length > 0) {
-    deleteTableData = bannerData.result.map((sData, i) => (
-      <tr key={sData._id} className="bg-green-50 border-b">
-        <th
-          scope="row"
-          className="px-2 md:px-6 py-2 text-lg font-semibold text-left text-gray-600 whitespace-nowrap"
-        >
-          {i + 1}
-        </th>
-        <td className="px-2 md:px-6 py-2">
-          <img className="w-40 min-h-[2rem]" src={sData.url} alt="" />
-        </td>
-        <td className="px-2 md:px-6 py-2">
-          <button type="button" onClick={() => handleBannerImg(sData._id)}>
-            <MdDelete className="text-2xl text-red-500 hover:text-red-700 ease-in-out duration-200" />
-          </button>
-        </td>
-      </tr>
-    ));
-  }
-
   // handle add banner
-  const [addImageFN] = useAddBannerMutation();
-  const [imgUploadLoading, setImageUploadLoading] = useState(false);
 
   const handleImageAdd = async (e) => {
     console.log("handleImageAdd called"); // Log to check if the function is being called
@@ -81,62 +33,46 @@ const Banner = () => {
   };
 
   // handle delete banner img
-  const [deleteBannerFN] = useDeleteBannerMutation();
-  const handleBannerImg = (_id) => {
-    deleteBannerFN(_id);
-  };
 
   return (
     <div>
-      <h1 className="my-6 text-2xl font-semibold text-primary-text">
-        Banner Preview
-      </h1>
-      <Slider />
-
       <div className="flex flex-col md:flex-row gap-x-6 my-10 items-start">
-        {/* img upload */}
         <div className="flex items-center justify-center w-full max-w-2xl">
-          {!imgUploadLoading ? (
-            <label
-              htmlFor="dropzone-file"
-              className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100"
-            >
-              <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg
-                  aria-hidden="true"
-                  className="w-10 h-10 mb-3 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  ></path>
-                </svg>
-                <p className="mb-2 text-sm text-gray-500">
-                  <span className="font-semibold">Click to upload</span>
-                </p>
-                <p className="text-xs text-gray-700 ">
-                  PNG, JPG || Recommend Size (height-418 width-1200)
-                </p>
-              </div>
-              <input
-                id="dropzone-file"
-                accept=".png, .jpg, .jpeg"
-                type="file"
-                className="hidden"
-                onChange={handleImageAdd}
-              />
-            </label>
-          ) : (
-            <div className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-              <div className="w-24 h-24">Loading...</div>
+          <label
+            htmlFor="dropzone-file"
+            className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100"
+          >
+            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+              <svg
+                aria-hidden="true"
+                className="w-10 h-10 mb-3 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                ></path>
+              </svg>
+              <p className="mb-2 text-sm text-gray-500">
+                <span className="font-semibold">Click to upload</span>
+              </p>
+              <p className="text-xs text-gray-700 ">
+                PNG, JPG || Recommend Size (height-418 width-1200)
+              </p>
             </div>
-          )}
+            <input
+              id="dropzone-file"
+              accept=".png, .jpg, .jpeg"
+              type="file"
+              className="hidden"
+              onChange={handleImageAdd}
+            />
+          </label>
         </div>
         {/* banner table */}
 
@@ -155,7 +91,6 @@ const Banner = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>{deleteTableData}</tbody>
           </table>
         </div>
       </div>

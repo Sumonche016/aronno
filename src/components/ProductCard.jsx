@@ -9,14 +9,19 @@ const ProductCard = async ({ searchParams }) => {
   let category = searchParams.category || "";
 
   let res = await getAllProducts(searchParams);
-
+  const categories = [
+    { name: "সকল পণ্য", value: "" },
+    { name: "ফল গাছ", value: "ফল গাছ" },
+    { name: "ফুল গাছ", value: "ফুল গাছ" },
+    { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
+  ];
   return (
     <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
       <div className="md:flex justify-between items-center mb-6">
         <h1 className=" text-center mb-4  text-3xl text-primary-text font-semibold  text-[#212b36]">
           আমাদের পণ্যসমূহ
         </h1>
-        <CategoryTabs searchParams={searchParams} />
+        <CategoryTabs categories={categories} searchParams={searchParams} />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
         {res.data.map((item) => (

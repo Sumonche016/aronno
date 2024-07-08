@@ -2,6 +2,9 @@ import Header from "@/components/admin/Header";
 import Sidebar from "@/components/admin/Sidebar";
 import { Baloo_Da_2 } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+
+import "../globals.css";
+
 const inter = Baloo_Da_2({ subsets: ["bengali"] });
 
 export default function RootLayout({ children }) {
