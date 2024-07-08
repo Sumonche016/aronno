@@ -2,10 +2,7 @@ import AllOrder from "./AllOrder";
 
 export async function fetchAllOrder() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SEVER_API}/odder`, {
-    next: {
-      tags: ["allOrders"],
-      cache: "no-store",
-    },
+    cache: "no-store",
   });
   console.log(res);
   if (!res.ok) {
