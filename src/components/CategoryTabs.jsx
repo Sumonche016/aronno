@@ -5,7 +5,7 @@ const CategoryTabs = ({ searchParams }) => {
     { name: "সকল পণ্য", value: "" },
     { name: "ফল গাছ", value: "ফল গাছ" },
     { name: "ফুল গাছ", value: "ফুল গাছ" },
-    { name: "শোভাময়-গাছ", value: "শোভাময়-গাছ" },
+    { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
   ];
 
   return (
