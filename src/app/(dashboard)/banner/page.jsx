@@ -1,9 +1,11 @@
+import { getAllbanner } from "@/lib/getBanner";
 import Banner from "./Banner";
 
-const page = () => {
+const page = async () => {
+  const bannerData = await getAllbanner();
   return (
     <div>
-      <Banner />
+      <Banner banners={bannerData.result} />
     </div>
   );
 };
