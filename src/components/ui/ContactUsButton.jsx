@@ -5,6 +5,7 @@ import whatsapp from "../../assests/Images/whatsapp.png";
 import messenger from "../../assests/Images/messnger.png";
 import call from "../../assests/Images/call.png";
 import Image from "next/image";
+import { MdContactPhone } from "react-icons/md";
 const ContactUsButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const phoneNumber = "+8801711258558";
@@ -31,12 +32,14 @@ const ContactUsButton = () => {
   };
   return (
     <div className="text-center mt-4 py-3">
-      <button
-        onClick={showModal}
-        className="px-8 py-3 bg-primary text-white font-medium  rounded-md shadow-sm"
-      >
-        Contact Us
-      </button>
+      <div className="text-center flex justify-center">
+        <button
+          onClick={showModal}
+          className="px-8 py-3 bg-primary flex items-center gap-2 justify-center text-white font-medium  rounded-md shadow-sm"
+        >
+          <MdContactPhone /> Contact Us
+        </button>
+      </div>
       <Modal
         title="Contact Options"
         visible={isModalVisible}

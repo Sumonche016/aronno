@@ -11,7 +11,7 @@ const Social = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.facebook.com/torulata24/"
+            href="https://www.facebook.com/Oroonnonursery"
           >
             <FaFacebookF />
           </a>{" "}
@@ -21,7 +21,7 @@ const Social = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.linkedin.com/company/torulata/"
+            href="https://www.linkedin.com/"
           >
             <FaLinkedinIn />
           </a>
@@ -30,16 +30,16 @@ const Social = () => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://wa.me/+8801708669918"
+            href="https://wa.me/+8801711258558"
           >
-            <BsWhatsapp className="text-[14px]" />
+            <BsWhatsapp className="" />
           </a>
         </li>
         <li className="cursor-pointer ">
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.instagram.com/torulata24/"
+            href="https://www.instagram.com"
           >
             <AiOutlineInstagram />
           </a>

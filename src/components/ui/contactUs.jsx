@@ -91,7 +91,7 @@ const Contact = () => {
         </div>
         <div className="w-full md:w-1/2">
           <div className="mb-8">
-            <h1 className="text-2xl font-bold">Contact Us</h1>
+            <h1 className="md:text-2xl text-xl font-bold">Contact Us</h1>
             <p className="text-muted">
               we are here for you , how can we help you
             </p>

@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../../assests/Images/logo-green.png";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { sideBarItems } from "@/utils/sidebarItems";
 
 import { Tooltip } from "antd";
 const Sidebar = () => {
   const pathname = usePathname();
-
+  const router = useRouter();
   const active =
     " flex text-primary items-center px-4  py-4 bg-[#f1f9ff] rounded-[10px] transition-all duration-200";
   const deactive =
@@ -19,7 +19,10 @@ const Sidebar = () => {
   return (
     <div className="bg-white shadow-md fixed  top-0 bottom-0">
       <div className="min-h-[100vh]  h-[100%]">
-        <div className="flex justify-center items-center mt-4">
+        <div
+          onClick={() => router.push("/")}
+          className="flex justify-center items-center mt-4 cursor-pointer"
+        >
           <Image src={logo} alt="logo" width={40} height={40} />
         </div>
 
