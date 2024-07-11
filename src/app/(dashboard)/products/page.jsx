@@ -7,8 +7,8 @@ async function fetchAllProducts() {
     {
       next: {
         tags: ["allProducts"],
-        cache: "no-store",
       },
+      cache: "no-store",
     }
   );
   console.log(res);

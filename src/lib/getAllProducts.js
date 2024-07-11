@@ -4,7 +4,12 @@ export async function getAllProducts(payload) {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SEVER_API}/api/v1/product/findByProductCategory?category=${category}&limit=${limit}&skip=0`,
-    { next: { tags: ["allProducts"] }, cache: "no-store" }
+    {
+      next: {
+        tags: ["allProducts"],
+      },
+      cache: "no-store",
+    }
   );
 
   console.log(
