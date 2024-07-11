@@ -56,7 +56,7 @@ const Contact = () => {
                     <MdOutlineEmail />
                     <h1 className="text-[12px]">Email</h1>
                   </div>
-                  <h1 className="text-[17px]">info@oroonno.com</h1>
+                  <h1 className="text-[17px]">info.oroonno@gmail.com</h1>
                 </div>
                 <div className="mt-6">
                   <div className="flex gap-1 items-center ">

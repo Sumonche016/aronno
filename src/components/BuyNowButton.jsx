@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { addProductToCart } from "@/hooks/cartFunctions";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { updateRefetch } from "@/lib/ProductSlice/productSlice";
+import ContactUsButton from "./ui/ContactUsButton";
 
 const BuyNowButton = ({ product }) => {
   const dispatch = useAppDispatch();
@@ -42,16 +43,20 @@ const BuyNowButton = ({ product }) => {
 
   return (
     <div className="w-full">
-      <button
-        onClick={isInCart ? handleRemoveFromCart : handleAddToCart}
-        className={`px-3 py-2 border border-input rounded-[5px] w-full text-xs sm:text-sm font-medium ${
-          isInCart
-            ? "bg-primary text-white"
-            : "hover:bg-primary hover:text-white"
-        }   duration-100 ease-in-out`}
-      >
-        {isInCart ? "Remove From Cart" : "Add To Cart"}
-      </button>
+      {product.product_price == 0 || !product.product_price ? (
+        <ContactUsButton />
+      ) : (
+        <button
+          onClick={isInCart ? handleRemoveFromCart : handleAddToCart}
+          className={`px-3 py-2 border border-input rounded-[5px] w-full text-xs sm:text-sm font-medium ${
+            isInCart
+              ? "bg-primary text-white"
+              : "hover:bg-primary hover:text-white"
+          }   duration-100 ease-in-out`}
+        >
+          {isInCart ? "Remove From Cart" : "Add To Cart"}
+        </button>
+      )}
     </div>
   );
 };
