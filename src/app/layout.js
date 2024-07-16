@@ -14,7 +14,7 @@ const FooterNav = dynamic(() => import("../components/FooterNav.jsx"), {
 });
 
 export const metadata = {
-  title: "Aronno",
+  title: "Aroonno",
   description: "Stay Green Stay Trusted",
 };
 

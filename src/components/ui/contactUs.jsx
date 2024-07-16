@@ -49,7 +49,7 @@ const Contact = () => {
                     <IoIosPeople />
                     <h1 className="text-[12px]"> Name</h1>
                   </div>
-                  <h1 className="text-[17px]">Oronno</h1>
+                  <h1 className="text-[17px]">Oroonno</h1>
                 </div>
                 <div className="mt-6">
                   <div className="flex gap-1 items-center ">

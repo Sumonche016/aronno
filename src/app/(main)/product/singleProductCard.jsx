@@ -50,7 +50,7 @@ const SingleProductCard = ({ product }) => {
             <div className="mt-3">
               <div className="flex gap-2 items-center font-medium">
                 <h1>Available:</h1>
-                <h1 className="text-[#637381]">79 items</h1>
+                <h1 className="text-[#637381]">210 items</h1>
               </div>
             </div>
             <div className="mt-3">
