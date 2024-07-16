@@ -7,8 +7,10 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
 import { MdOutlineEmail } from "react-icons/md";
 import Social from "./Social";
+
 const Contact = () => {
   const form = useRef();
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -33,57 +35,66 @@ const Contact = () => {
   };
 
   return (
-    <div className=" py-[5rem]" id="contact">
+    <div className="py-[5rem]" id="contact">
       <div className="w-[95%] md:w-[60%] flex flex-col md:flex-row mx-auto gap-8 shadow-deep md:p-12 p-4 rounded-lg bg-white">
-        <div className="w-full md:w-1/2  ">
-          <div className=" ">
+        <div className="w-full md:w-1/2">
+          <div>
             <div className="text-[14px] md:text-[15px] text-black">
               <div className="mb-4">
-                <h1 className=" font-medium text-xl text-black">
-                  Contact info
-                </h1>
+                <h1 className="font-medium text-xl text-black">Contact info</h1>
               </div>
-              <div className="">
-                <div className="">
-                  <div className="flex gap-1 items-center ">
+              <div>
+                <div>
+                  <div className="flex gap-1 items-center">
                     <IoIosPeople />
-                    <h1 className="text-[12px]"> Name</h1>
+                    <h1 className="text-[12px]">Name</h1>
                   </div>
                   <h1 className="text-[17px]">Oroonno</h1>
                 </div>
                 <div className="mt-6">
-                  <div className="flex gap-1 items-center ">
+                  <div className="flex gap-1 items-center">
                     <MdOutlineEmail />
                     <h1 className="text-[12px]">Email</h1>
                   </div>
                   <h1 className="text-[17px]">info.oroonno@gmail.com</h1>
                 </div>
                 <div className="mt-6">
-                  <div className="flex gap-1 items-center ">
+                  <div className="flex gap-1 items-center">
                     <BiPhone />
                     <h1 className="text-[12px]">Phone</h1>
                   </div>
                   <h1 className="text-[17px]">01711258558</h1>
                 </div>
-
                 <div className="mt-6">
-                  <div className="flex gap-1 items-center ">
+                  <div className="flex gap-1 items-center">
                     <FaRegAddressCard />
                     <h1 className="text-[12px]">Address</h1>
                   </div>
                   <h1 className="text-[15px] md:text-[16px] mt-2">
-                    {" "}
-                    <span className="font-semibold">Office</span> : House: 35,
-                    Road: 15, Sector: 11, Uttara, Dhaka-1230
+                    <span className="font-semibold">Office</span> :{" "}
+                    <a
+                      href="https://www.google.com/maps?q=23.8769096,90.3881775"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500"
+                    >
+                      House: 35, Road: 15, Sector: 11, Uttara, Dhaka-1230
+                    </a>
                   </h1>
-                  <h1 className=" text-[15px] md:text-[16px] mt-2 md:mt-0">
-                    <span className="font-semibold">Nursery</span>: Charabug,
-                    Ashulia, Savar, Dhaka
+                  <h1 className="text-[15px] md:text-[16px] mt-2 md:mt-0">
+                    <span className="font-semibold">Nursery</span> :{" "}
+                    <a
+                      href="https://www.google.com/maps?q=23.8891464,90.3070789"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500"
+                    >
+                      Charabug, Ashulia, Savar, Dhaka
+                    </a>
                   </h1>
                 </div>
               </div>
             </div>
-
             <div className="mt-8">
               <Social />
             </div>
@@ -93,7 +104,7 @@ const Contact = () => {
           <div className="mb-8">
             <h1 className="md:text-2xl text-xl font-bold">Contact Us</h1>
             <p className="text-muted">
-              we are here for you , how can we help you
+              We are here for you, how can we help you?
             </p>
           </div>
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
@@ -122,7 +133,6 @@ const Contact = () => {
             ></textarea>
             <button
               type="submit"
-              // onClick={() => toast("First Toast")}
               className="bg-primary w-full p-3 focus:outline-none text-white font-semibold rounded-md"
             >
               Submit

@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white nav fixed top-0 left-0 w-full z-50 hidden">
+    <nav className="bg-white nav fixed top-0 left-0 w-full z-50">
       <div className="flex justify-between items-center container py-3 ">
         <div className="md:hidden">
           <RxHamburgerMenu
