@@ -1,4 +1,5 @@
 "use client";
+
 import { CloseOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import logo from "../assests/Images/logo-green.png";
@@ -10,10 +11,10 @@ import { Drawer, List } from "antd";
 import { useState } from "react";
 
 const categories = [
-  { name: "সকল পণ্য", value: "" },
-  { name: "ফল গাছ", value: "ফল গাছ" },
-  { name: "ফুল গাছ", value: "ফুল গাছ" },
-  { name: "শোভাময়-গাছ", value: "শোভাময়-গাছ" },
+  { name: "সকল পণ্য", value: "/sokol-ponno" },
+  { name: "ফল গাছ", value: "/falgach" },
+  { name: "ফুল গাছ", value: "/fulgach" },
+  { name: "শোভাময়-গাছ", value: "/sovamoy" },
 ];
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white nav fixed top-0 left-0 w-full z-50">
+    <nav className="bg-white nav fixed top-0 left-0 w-full z-50 ">
       <div className="flex justify-between items-center container py-3 ">
         <div className="md:hidden">
           <RxHamburgerMenu
@@ -89,7 +90,9 @@ const Header = () => {
           dataSource={categories}
           renderItem={(item) => (
             <List.Item>
-              <h1 className="block px-4 py-2 hover:bg-gray-100">{item.name}</h1>
+              <Link href={item.value}>
+                <p className="block px-4 py-2 hover:bg-gray-100">{item.name}</p>
+              </Link>
             </List.Item>
           )}
         />

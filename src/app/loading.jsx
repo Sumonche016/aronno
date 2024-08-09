@@ -1,17 +1,12 @@
-"use client";
-import loading from "./Plant.gif";
-import Image from "next/image";
+// Import the CSS file
+
 const Loading = () => {
   return (
-    <section className="flex justify-center items-center h-screen">
-      <div className="mx-auto">
-        <Image width={200} height={200} src={loading} alt="loading image" />
+    <div className="flex items-center justify-center h-screen">
+      <div className="spinner">
+        <div className="spinner-text">aroonno</div>
       </div>
-
-      {/* <div>
-        <Image width={200} height={200} src={loading} alt="loading image" />
-      </div> */}
-    </section>
+    </div>
   );
 };
 

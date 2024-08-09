@@ -1,4 +1,5 @@
 export async function getAllProducts(payload) {
+  console.log(payload);
   let category = payload?.category ? payload.category : "";
   let limit = payload?.limit ? payload.limit : 20;
 
