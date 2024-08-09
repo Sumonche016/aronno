@@ -9,6 +9,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
 import { Drawer, List } from "antd";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const categories = [
   { name: "সকল পণ্য", value: "/sokol-ponno" },
@@ -19,6 +20,7 @@ const categories = [
 
 const Header = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const router = useRouter();
 
   const showDrawer = () => {
     setDrawerVisible(true);
@@ -28,9 +30,14 @@ const Header = () => {
     setDrawerVisible(false);
   };
 
+  const handleNavigate = (value) => {
+    router.push(value);
+    closeDrawer();
+  };
+
   return (
-    <nav className="bg-white nav fixed top-0 left-0 w-full z-50 ">
-      <div className="flex justify-between items-center container py-3 ">
+    <nav className="bg-white nav fixed top-0 left-0 w-full z-50">
+      <div className="flex justify-between items-center container py-3">
         <div className="md:hidden">
           <RxHamburgerMenu
             className="text-[2rem] cursor-pointer"
@@ -89,10 +96,8 @@ const Header = () => {
         <List
           dataSource={categories}
           renderItem={(item) => (
-            <List.Item>
-              <Link href={item.value}>
-                <p className="block px-4 py-2 hover:bg-gray-100">{item.name}</p>
-              </Link>
+            <List.Item onClick={() => handleNavigate(item.value)}>
+              <p className="block px-4 py-2 hover:bg-gray-100">{item.name}</p>
             </List.Item>
           )}
         />
