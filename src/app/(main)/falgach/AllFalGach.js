@@ -1,8 +1,12 @@
+"use client";
 import BuyNowButton from "@/components/BuyNowButton";
 import Image from "next/image";
 import Link from "next/link";
+import cn from "clsx";
+import { useState } from "react";
 
 const AllFalGach = ({ res }) => {
+  const [isLoading, setLoading] = useState(true);
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
       {res.data.map((item) => (
@@ -13,10 +17,19 @@ const AllFalGach = ({ res }) => {
           <Link href={`/product/${item._id}`}>
             <div className="relative md:h-[15rem] h-[12rem] w-full ">
               <Image
-                fill
                 alt={item.product_title}
-                className="p-2 rounded-sm"
+                className={cn(
+                  "duration-700 ease-in-out p-2 rounded-sm",
+                  isLoading
+                    ? "grayscale blur-2xl scale-110"
+                    : "grayscale-0 blur-0 scale-100"
+                )}
                 src={item.product_images}
+                layout="fill" // Make the image fill the parent
+                objectFit="cover" // Ensure the image covers the whole area
+                quality={75} // Adjust the quality of the image
+                loading="lazy" // Enable lazy loading
+                onLoadingComplete={() => setLoading(false)}
               />
             </div>
 

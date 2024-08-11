@@ -3,6 +3,7 @@ import Link from "next/link";
 import CategoryTabs from "./CategoryTabs";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 const AllProducts = dynamic(() => import("./AllProducts"), {
   loading: () => <h1>Loading Through Server Component...</h1>,
@@ -28,7 +29,7 @@ const ProductCard = async ({ searchParams }) => {
         </h1>
         <CategoryTabs categories={categories} searchParams={searchParams} />
       </div>
-      <Suspense fallback={<h1>Loading Jerry&apos;s Story</h1>}>
+      <Suspense fallback={<Loading />}>
         <AllProducts res={res} />
       </Suspense>
 
