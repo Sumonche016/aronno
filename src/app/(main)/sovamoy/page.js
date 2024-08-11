@@ -1,7 +1,8 @@
 import { getAllProducts } from "@/lib/getAllProducts";
-import AllFalGach from "./AllFalGach";
+
 import { Suspense } from "react";
 import Loading from "@/app/loading";
+import AllFalGach from "../falgach/AllFalGach";
 
 const page = async () => {
   let payload = {

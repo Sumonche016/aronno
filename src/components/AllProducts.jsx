@@ -16,7 +16,7 @@ const AllProducts = ({ res }) => {
             className="bg-white shadow-card border border-card rounded-[8px]"
           >
             <Link href={`/product/${item._id}`}>
-              <div className="relative md:h-[18rem] w-full">
+              <div className="relative md:h-[18rem] h-[14rem] w-full">
                 <Image
                   alt={item.product_title}
                   className={cn(
