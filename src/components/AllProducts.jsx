@@ -16,7 +16,7 @@ const AllProducts = ({ res }) => {
             className="bg-white shadow-card border border-card rounded-[8px]"
           >
             <Link href={`/product/${item._id}`}>
-              <div className="relative md:h-[18rem] h-[14rem] w-full">
+              <div className="relative md:h-[18rem] h-[11rem] w-full">
                 <Image
                   alt={item.product_title}
                   className={cn(
@@ -34,7 +34,7 @@ const AllProducts = ({ res }) => {
                 />
               </div>
 
-              <div className="text-center p-3">
+              <div className="text-center p-3 pt-1">
                 <div>
                   <div className="text-sm sm:text-lg md:text-[1rem]">
                     <h3 className="truncate font-medium text-[#212b36]">
