@@ -96,9 +96,11 @@ const Header = () => {
         <List
           dataSource={categories}
           renderItem={(item) => (
-            <List.Item onClick={() => handleNavigate(item.value)}>
-              <p className="block px-4 py-2 hover:bg-gray-100">{item.name}</p>
-            </List.Item>
+            <Link href={`${item.value}`}>
+              <p className="block px-4 py-2 hover:bg-gray-100 border-b border-gray-200 font-medium text-[#212b36] text-[1.1rem]">
+                {item.name}
+              </p>
+            </Link>
           )}
         />
       </Drawer>

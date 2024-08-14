@@ -21,7 +21,7 @@ const AllFalGach = ({ res }) => {
                 className={cn(
                   "duration-700 ease-in-out p-2 rounded-sm",
                   isLoading
-                    ? "grayscale blur-2xl scale-110"
+                    ? "grayscale blur-xl scale-100"
                     : "grayscale-0 blur-0 scale-100"
                 )}
                 src={item.product_images}

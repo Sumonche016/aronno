@@ -1,7 +1,7 @@
 import { getAllProducts } from "@/lib/getAllProducts";
 import AllFalGach from "./AllFalGach";
 import { Suspense } from "react";
-import Loading from "@/app/loading";
+import SuspanseLoader from "@/app/(dashboard)/banner/SuspanseLoader";
 
 const page = async () => {
   let payload = {
@@ -15,7 +15,7 @@ const page = async () => {
       <h1 className=" text-center my-6 text-3xl text-primary-text font-semibold  text-[#212b36]">
         সর্বাধিক বিক্রিত ফল গাছ
       </h1>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<SuspanseLoader />}>
         <AllFalGach res={products} />
       </Suspense>
     </div>
