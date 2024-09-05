@@ -119,7 +119,7 @@ const Contact = () => {
               className="bg-[#F2F2F2] rounded-md text-muted w-full p-3 focus:outline-none"
               type="email"
               name="from_email"
-              placeholder="Enter your email"
+              placeholder="Enter your mobile number"
               required
             />
             <textarea
