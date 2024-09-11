@@ -47,10 +47,13 @@ const FooterNav = () => {
               <FaHome />
               <h1 className="mt-2">Home</h1>
             </li>
-            <li className="flex flex-col justify-center items-center">
+            <Link
+              href="/#category"
+              className="flex flex-col justify-center items-center"
+            >
               <BiSolidCategory />
               <h1 className="mt-2">Category</h1>
-            </li>
+            </Link>
             <Link href={"/checkout"}>
               <li className="flex flex-col justify-center items-center cursor-pointer">
                 <FaBagShopping />

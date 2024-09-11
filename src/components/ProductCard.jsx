@@ -22,7 +22,7 @@ const ProductCard = async ({ searchParams }) => {
     { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
   ];
   return (
-    <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
+    <div id="category" className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
       <div className="md:flex justify-between items-center mb-6">
         <h1 className=" text-center mb-4  text-3xl text-primary-text font-semibold  text-[#212b36]">
           আমাদের পণ্যসমূহ

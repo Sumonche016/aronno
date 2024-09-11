@@ -96,7 +96,7 @@ const Header = () => {
         <List
           dataSource={categories}
           renderItem={(item) => (
-            <Link href={`${item.value}`}>
+            <Link href={`${item.value}`} onClick={closeDrawer}>
               <p className="block px-4 py-2 hover:bg-gray-100 border-b border-gray-200 font-medium text-[#212b36] text-[1.1rem]">
                 {item.name}
               </p>
