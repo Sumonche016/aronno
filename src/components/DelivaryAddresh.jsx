@@ -140,7 +140,7 @@ const DeliveryAddress = () => {
               </span>
               <div className="flex gap-6">
                 <input checked type="checkbox" name="" id="" />
-                <label htmlFor="">100tk</label>
+                <label htmlFor="">150tk</label>
               </div>
             </div>
 

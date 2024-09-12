@@ -28,12 +28,12 @@ const OrderSummery = () => {
         </div>
         <div className="flex justify-between border-b pb-2 border-borderDark">
           <h1 className="font-medium">Delivary Charge</h1>
-          <h1 className="font-semibold">100 {""} tk</h1>
+          <h1 className="font-semibold">150 {""} tk</h1>
         </div>
         <div className="flex justify-between">
           <h1 className="font-medium">Total</h1>
           <h1 className="font-semibold">
-            {totalPrice + 100} {""} tk
+            {totalPrice + 150} {""} tk
           </h1>
         </div>
       </div>

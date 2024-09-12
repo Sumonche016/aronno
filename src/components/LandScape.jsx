@@ -33,6 +33,7 @@ const LandScape = async ({ searchParams }) => {
     { name: "ফ্যাক্টরি গ্রীন প্রজেক্ট", value: "ফ্যাক্টরি গ্রীন প্রজেক্ট" },
     { name: "বেলকনি বাগান", value: "বেলকনি বাগান" },
     { name: "হোম গ্রীন ডেকোর", value: "হোম গ্রীন ডেকোর" },
+    { name: "আমাদের প্রজেক্ট", value: "আমাদের প্রজেক্ট" },
   ];
 
   let res = await getAllProductLandScape(searchParams);
