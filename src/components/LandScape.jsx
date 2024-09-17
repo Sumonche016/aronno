@@ -39,7 +39,7 @@ const LandScape = async ({ searchParams }) => {
   let res = await getAllProductLandScape(searchParams);
 
   return (
-    <div className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
+    <div id="#landscape" className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
       <div className="   mb-6">
         <h1 className=" text-center mb-4  text-3xl text-primary-text font-semibold  text-[#212b36]">
           ল্যান্ডস্কেপিং প্রজেক্ট

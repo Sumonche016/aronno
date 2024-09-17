@@ -13,9 +13,13 @@ import { useRouter } from "next/navigation";
 
 const categories = [
   { name: "সকল পণ্য", value: "/sokol-ponno" },
+  { name: "ল্যান্ডস্কেপিং প্রজেক্ট", value: "/#landscape" },
   { name: "ফল গাছ", value: "/falgach" },
   { name: "ফুল গাছ", value: "/fulgach" },
   { name: "শোভাময়-গাছ", value: "/sovamoy" },
+  { name: "গার্ডেনিং টুলস", value: "/gardening" },
+  { name: "জৈব সার ও কীটনাশক", value: "/kit" },
+  { name: "টব ও জিও ব্যাগ ", value: "/jiyobag" },
 ];
 
 const Header = () => {
