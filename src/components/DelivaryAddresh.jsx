@@ -55,7 +55,7 @@ const DeliveryAddress = () => {
       <div className="py-6 px-2">
         <h4 className="text-red-700 flex font-semibold items-center text-center py-4 border-b border-borderDark">
           অর্ডার কনফার্ম করতে আপনার নাম, মোবাইল নাম্বর, ঠিকানা লিখে অর্ডার করুন
-          বাটনে ক্লিক করুন।
+          বাটনে ক্লিক করুন ।
         </h4>
         {/* use form for address */}
         <form id="checkoutform" onSubmit={handleSubmit(onSubmit)}>
