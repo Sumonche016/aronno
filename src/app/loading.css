@@ -1,0 +1,11 @@
+.custom-spinner .ant-spin-dot i {
+    background-color: #095723; /* First color */
+  }
+  
+  .custom-spinner .ant-spin-dot-item {
+    background-color: #059669; /* Second color */
+  }
+  
+  .custom-spinner .ant-spin-dot {
+    font-size: 48px; /* Increase the size */
+}
