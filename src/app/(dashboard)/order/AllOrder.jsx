@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import DataTable from "react-data-table-component";
+import { Modal } from "antd";
+import { useDeleteOrderMutation } from "@/lib/ClientApi/ClientApi";
+const { confirm } = Modal;
 
 import { GiConfirmed } from "react-icons/gi";
 import { MdDetails } from "react-icons/md";
@@ -8,10 +11,14 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { convertDateFormat } from "@/utils/convertDateFormat";
 import { Tooltip } from "antd";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { customRevalidateTag } from "@/lib/customRevalidate";
 
 const AllOrder = ({ allOderData }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
+  const [deleteOrder] = useDeleteOrderMutation();
+
   const statusShow = (status) => {
     if (status == "delivered") {
       return <h1 className="text-[#e5f448] bg-[#2e312b] badge">Delivered</h1>;
@@ -41,6 +48,28 @@ const AllOrder = ({ allOderData }) => {
       },
     },
   ];
+
+  const showDeleteConfirm = (orderId) => {
+    confirm({
+      title: "Are you sure you want to delete this order?",
+      content: "This action cannot be undone.",
+      okText: "Yes",
+      okType: "danger",
+      cancelText: "No",
+      onOk() {
+        deleteOrder(orderId)
+          .unwrap()
+          .then(() => {
+            toast.success("Order deleted successfully");
+            customRevalidateTag("allorder");
+          })
+          .catch((error) => {
+            toast.error(error?.data?.message || "Failed to delete order");
+            console.error("Failed to delete order:", error);
+          });
+      },
+    });
+  };
 
   const columns = [
     {
@@ -108,19 +137,18 @@ const AllOrder = ({ allOderData }) => {
         <div>
           <div className="flex gap-4">
             <div
-              //   onClick={() => updateStatus(row._id, "confirmed")}
               data-tooltip-id="confirmed"
               data-tooltip-content="confirmed"
               className="bg-[#0C4BCC] px-[12px] py-[8px] rounded-[5px] cursor-pointer"
             >
-              <GiConfirmed className="text-white text-[16px]  " />
+              <GiConfirmed className="text-white text-[16px]" />
             </div>
             <Tooltip title="Delete">
               <div
-                // onClick={() => updateStatus(row._id, "delivered")}
+                onClick={() => showDeleteConfirm(row._id)}
                 className="bg-red-600 px-[12px] py-[8px] rounded-[5px] cursor-pointer"
               >
-                <BsFillTrashFill className="!text-white text-[16px]  " />
+                <BsFillTrashFill className="!text-white text-[16px]" />
               </div>
             </Tooltip>
             <Tooltip title="Details">
@@ -128,7 +156,7 @@ const AllOrder = ({ allOderData }) => {
                 onClick={() => router.push(`/order/OrderDetails/${row._id}`)}
                 className="bg-[#3ab559] px-[12px] py-[8px] rounded-[5px] cursor-pointer"
               >
-                <MdDetails className="!text-white text-[16px]  " />
+                <MdDetails className="!text-white text-[16px]" />
               </div>
             </Tooltip>
           </div>

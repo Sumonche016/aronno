@@ -2,7 +2,7 @@ import AllOrder from "./AllOrder";
 
 export async function fetchAllOrder() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SEVER_API}/odder`, {
-    cache: "no-store",
+    next: { tags: [""] },
   });
   console.log(res);
   if (!res.ok) {

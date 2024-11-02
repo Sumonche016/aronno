@@ -7,11 +7,12 @@ import SuspanseLoader from "@/app/(dashboard)/banner/SuspanseLoader";
 
 const page = async () => {
   let payload = {
-    limit: "5000",
+    limit: "20",
     category: "",
   };
   let products = await getAllProducts(payload);
-
+  console.log(products, "need");
+  console.log("hide");
   return (
     <div className="md:w-[80%] w-[95%] mx-auto py-[10rem]">
       <h1 className=" text-center my-6 text-3xl text-primary-text font-semibold  text-[#212b36]">

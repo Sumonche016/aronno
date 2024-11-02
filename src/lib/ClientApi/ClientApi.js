@@ -4,6 +4,7 @@ const serverUrl = process.env.NEXT_PUBLIC_SEVER_API;
 export const ProductApi = createApi({
   reducerPath: "productApi",
   baseQuery: fetchBaseQuery({ baseUrl: serverUrl }),
+  tagTypes: ["Banner", "Orders"],
 
   endpoints: (builder) => ({
     getProductsById: builder.query({
@@ -35,6 +36,13 @@ export const ProductApi = createApi({
       }),
       invalidatesTags: ["Banner"],
     }),
+    deleteOrder: builder.mutation({
+      query: (orderId) => ({
+        url: `/odder/delete/${orderId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Orders"],
+    }),
   }),
 });
 
@@ -45,4 +53,5 @@ export const {
   useAddBannerMutation,
   useGetAllBannerQuery,
   useDeleteBannerMutation,
+  useDeleteOrderMutation,
 } = ProductApi;

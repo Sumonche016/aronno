@@ -13,11 +13,6 @@ export async function getAllProducts(payload) {
     }
   );
 
-  console.log(
-    `${
-      process.env.NEXT_PUBLIC_SEVER_API
-    }/api/v1/product/findByProductCategory?category=${category}&limit=20&skip=${0}`
-  );
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
