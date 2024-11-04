@@ -26,7 +26,11 @@ const SideNav = () => {
           <h1>Shop By Category</h1>
         </div>
         {sideNavRoutes.map((route, key) => (
-          <Link key={key} href={route.value} className="group/link">
+          <Link
+            key={key}
+            href={route.value}
+            className="group/link cursor-pointer"
+          >
             <div className="flex text-[#333] justify-between items-center border-b border-[#e8e8e8] text-sm px-[20px] py-[12px] font-medium hover:bg-primary-gray duration-100 ease-out cursor-pointer">
               <li className="text-[#555]">{route.name}</li>
               {route.children && (
