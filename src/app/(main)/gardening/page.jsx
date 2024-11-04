@@ -3,7 +3,7 @@ import AllFalGach from "../falgach/AllFalGach";
 
 const page = async () => {
   let payload = {
-    limit: "5000",
+    limit: "50",
     category: "জৈব সার ও কীটনাশক",
   };
   let products = await getAllProducts(payload);

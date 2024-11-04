@@ -36,6 +36,7 @@ const ProductCard = async ({ searchParams }) => {
       {Math.round(res.totalProductLength / 20) >= limit / 20 && (
         <div className="flex justify-center items-center mt-12">
           <Link
+            scroll={false}
             href={`/?category=${category}&limit=${
               limit ? limit + 20 : 40
             }&skipFrom=0`}
