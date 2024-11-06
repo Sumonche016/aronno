@@ -5,11 +5,16 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "react-hot-toast";
+import dynamic from "next/dynamic";
 import NextTopLoader from "nextjs-toploader";
 import Head from "next/head";
 import { GoogleTagManager } from "@next/third-parties/google";
-import FooterNav from "@/components/FooterNav";
 const inter = Baloo_Da_2({ subsets: ["bengali"] });
+
+const FooterNav = dynamic(() => import("../components/FooterNav.jsx"), {
+  ssr: false,
+});
+pen;
 
 export const metadata = {
   title: "Oroonno",

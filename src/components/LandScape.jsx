@@ -3,7 +3,6 @@ import ContactUsButton from "./ui/ContactUsButton";
 import LandScapeTab from "./LandScapeTab";
 
 async function getAllProductLandScape(searchParams) {
-  console.log(searchParams, "params");
   let categoryLand = searchParams?.landScape
     ? searchParams?.landScape
     : "ছাদ বাগান";
