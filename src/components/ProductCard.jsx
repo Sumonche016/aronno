@@ -14,6 +14,7 @@ const ProductCard = async ({ searchParams }) => {
   let category = searchParams.category || "";
 
   let res = await getAllProducts(searchParams);
+  console.log(res, "need");
 
   const categories = [
     { name: "সকল পণ্য", value: "" },
