@@ -14,7 +14,6 @@ const inter = Baloo_Da_2({ subsets: ["bengali"] });
 const FooterNav = dynamic(() => import("../components/FooterNav.jsx"), {
   ssr: false,
 });
-pen;
 
 export const metadata = {
   title: "Oroonno",
