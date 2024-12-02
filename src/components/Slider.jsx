@@ -1,13 +1,20 @@
-import { getAllbanner } from "@/lib/getBanner";
+'use client'
+
+
+import { useGetAllBannerQuery } from "@/lib/ClientApi/ClientApi";
 import Carousel from "./Caurosel";
 import Image from "next/image";
 
-const Slider = async () => {
-  let data = await getAllbanner();
+const Slider = () => {
+  const { data, error, isLoading } = useGetAllBannerQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading banners</div>;
+
   const bannerContent = data?.result.map((sData) => (
     <Image
       key={sData._id}
-      className="min-w-full h-full  "
+      className="min-w-full h-full"
       src={sData.url}
       width={0}
       height={0}
@@ -18,7 +25,7 @@ const Slider = async () => {
   ));
 
   return (
-    <div className="w-full ">
+    <div className="w-full">
       <div className="max-w-full h-auto">
         {<Carousel>{bannerContent}</Carousel>}
       </div>
