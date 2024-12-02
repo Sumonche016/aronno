@@ -1,27 +1,35 @@
-import { getAllProducts } from "@/lib/getAllProducts";
+"use client";
 import Link from "next/link";
 import CategoryTabs from "./CategoryTabs";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import SuspanseLoader from "@/app/(dashboard)/banner/SuspanseLoader";
+import { useGetAllProductsQuery } from "@/lib/ClientApi/ClientApi";
 
 const AllProducts = dynamic(() => import("./AllProducts"), {
   loading: () => <h1>Loading Through Server Component...</h1>,
 });
 
-const ProductCard = async ({ searchParams }) => {
-  let limit = Number(searchParams.limit) || 20;
-  let category = searchParams.category || "";
+const ProductCard = ({ searchParams }) => {
+  const limit = Number(searchParams?.limit) || 20;
+  const category = searchParams?.category || "";
 
-  let res = await getAllProducts(searchParams);
-  console.log(res, "need");
+  const {
+    data: res,
+    isLoading,
+    error,
+  } = useGetAllProductsQuery({ limit, category });
 
   const categories = [
     { name: "সকল পণ্য", value: "" },
     { name: "ফল গাছ", value: "ফল গাছ" },
     { name: "ফুল গাছ", value: "ফুল গাছ" },
-    { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
+    { name: "শোভাময়-গাছ", value: "শোভাময় গাছ" },
   ];
+
+  if (isLoading) return <SuspanseLoader />;
+  if (error) return <div>Error loading products</div>;
+
   return (
     <div id="category" className="md:w-[80%] w-[95%] mx-auto py-[5rem]">
       <div className="md:flex justify-between items-center mb-6">

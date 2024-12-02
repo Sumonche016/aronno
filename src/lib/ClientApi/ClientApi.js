@@ -43,6 +43,17 @@ export const ProductApi = createApi({
       }),
       invalidatesTags: ["Orders"],
     }),
+    getAllProducts: builder.query({
+      query: (params) => ({
+        url: `/api/v1/product/findByProductCategory`,
+        method: "GET",
+        params: {
+          category: params?.category || "",
+          limit: params?.limit || 20,
+          skip: 0,
+        },
+      }),
+    }),
   }),
 });
 
@@ -54,4 +65,5 @@ export const {
   useGetAllBannerQuery,
   useDeleteBannerMutation,
   useDeleteOrderMutation,
+  useGetAllProductsQuery,
 } = ProductApi;
