@@ -34,7 +34,7 @@ const TrustedCompnay = () => {
             className="flex animate-scroll"
             style={{
               width: "fit-content",
-              animation: "scroll 30s linear infinite",
+              animation: "scroll 10s linear infinite",
             }}
           >
             {/* First set of logos */}
