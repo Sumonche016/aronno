@@ -9,6 +9,8 @@ import image3 from "../assests/slides3.jpg";
 import image4 from "../assests/slides4.jpg";
 import image5 from "../assests/slides5.jpg";
 import Image6 from "../assests/slides6.jpg";
+import Image7 from "../assests/slides7.jpg";
+import Image8 from "../assests/slides8.jpg";
 
 const TrustedCompnay = () => {
   // Sample company logos - replace these with your actual company images/logos
@@ -19,6 +21,8 @@ const TrustedCompnay = () => {
     { id: 4, name: "Company 4", logo: image4 },
     { id: 5, name: "Company 5", logo: image5 },
     { id: 6, name: "Company 6", logo: Image6 },
+    { id: 7, name: "Company 6", logo: Image7 },
+    { id: 8, name: "Company 6", logo: Image8 },
   ];
 
   return (
